@@ -34,18 +34,18 @@ typedef struct list_s
 
 /**
  * struct built_s
- * @name: builtin
+ * @class: builtin
  * @pointer of func.
  * Descrip.: struct for builtin func.
 **/
 typedef struct built_s
 {
-	char *name;
+	char *class;
 	int (*p)(void);
 } built_s;
 
-void prompt(int fd, struct stat buf);
-char *_getline(FILE *fp);
+void prompt(int fp, struct stat buf);
+char *_getroot(FILE *bf);
 char **tokenizer(char *str);
 char *convert(char *command, char *reach, char *location);
 int parent_ch(char *reach, char **toks);
@@ -62,12 +62,12 @@ char *_strcpy(char *dest, char *src);
 int shell_env(void);
 int shell_exit(void);
 int builtin_exe(char **toks);
-int shell_num_builtin(built_s builtin[]);
+int shell_digit_builtin(built_s builtin[]);
 
 /* helper function prototype for linked list location */
 char *_getenv(const char *class);
 char **copy_env(char **env_copy, unsigned int env_length);
-list_s *pathlist(char *var, list_s *head);
+list_s *locationlist(char *var, list_s *head);
 
 /* prototypes for malloc func. */
 void malloc_all(char **toks, char *location,
