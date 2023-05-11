@@ -17,7 +17,7 @@
 #define ERR_MALLOC "Unable to malloc space\n"
 #define ERR_PATH "No such file or dir.\n"
 #define ERR_FORK "Unable to fork and create parent_ch process\n"
-extern char **environ;
+extern char **env;
 
 /**
  * struct list_s
@@ -54,8 +54,8 @@ void errors(int error);
 /* utility func. */
 void _puts(char *str);
 int _strlen(char *s);
-int _strcmp(char *name, char *variable, unsigned int length);
-int _strncmp(char *name, char *variable, unsigned int length);
+int _strcmp(char *class, char *var, unsigned int length);
+int _strncmp(char *class, char *var, unsigned int length);
 char *_strcpy(char *dest, char *src);
 
 /* builtin prototypes */
@@ -65,9 +65,9 @@ int builtin_exe(char **toks);
 int shell_num_builtin(built_s builtin[]);
 
 /* helper function prototype for linked list location */
-char *_getenv(const char *name);
-char **copy_env(char **environ_copy, unsigned int environ_length);
-list_s *pathlist(char *variable, list_s *head);
+char *_getenv(const char *class);
+char **copy_env(char **env_copy, unsigned int env_length);
+list_s *pathlist(char *var, list_s *head);
 
 /* prototypes for malloc func. */
 void malloc_all(char **toks, char *location,
