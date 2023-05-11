@@ -27,7 +27,7 @@ int builtin_exec(char **token)
 	{
 		if (_strcmp(token[0], builtin[k].class, length) == 0)
 		{
-			status = (builtin[k].p)();
+			stat = (builtin[k].p)();
 			return (stat);
 		}
 	}
