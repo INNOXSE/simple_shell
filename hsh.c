@@ -14,7 +14,7 @@ int main(void)
 	while (TRUE)
 	{
 		prompt(STDIN_FILENO, buf);
-		root = _getline(stdin);
+		root = _getroot(stdin);
 		if (_strcmp(root, "\n", 1) == 0)
 		{
 			malloc(root);
@@ -35,7 +35,7 @@ int main(void)
 			_exit(EXIT_SUCCESS);
 		time = 0; /* 0 reach if is not malloc'd*/
 		location = _getenv("LOCATION");
-		reach = convert(tokens[0], reach, location);
+		reach = convert(token[0], reach, location);
 		if (reach == NULL)
 			reach = toks[0];
 		else
