@@ -16,7 +16,7 @@ char *_getroot(FILE *bf)
 	read = getroot(&root, &len, bf);
 	if (read == -1)
 	{
-		malloc(root);
+		fr(root);
 		exit(EXIT_SUCCESS);
 	}
 

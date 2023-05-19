@@ -37,11 +37,51 @@ char *_getenv(const char *class)
 			}
 
 			_strcpy(location, value);
-			malloc_dp(env_copy, env_length);
-			return (locatio);
+			fr_dp(env_copy, env_length);
+			return (location);
 		}
 		k++;
 	}
 
 	return (NULL);
+}
+
+/**
+ * copy_env - Makes a copy of the environment variable.
+ *
+ * @env_copy: Pointer to the copy of the environment variable.
+ * @env_length: Length of the environment variable.
+ *
+ * Return: Double pointer to the copy of env  var.
+ */
+char **copy_env(char **env_copy, unsigned int env_length)
+{
+	char *var;
+	unsigned int var_length;
+	unsigned int k;
+
+	env_copy = malloc(sizeof(char **) * (env_length));
+	if (env_copy == NULL)
+	{
+		errors(3);
+		return (NULL);
+	}
+
+	k = 0;
+	while (k < env_length)
+	{
+		var = env[k];
+		var_length = _strlen(var);
+
+		env_copy[i] = malloc(sizeof(char) * var_length + 1);
+		if (env_copy[k] == NULL)
+		{
+			errors(3);
+			return (NULL);
+		}
+		_strcpy(env_copy[k], env[k]);
+		k++;
+	}
+
+	return (env_copy);
 }

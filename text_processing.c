@@ -17,7 +17,7 @@ int _strcmp(char *class, char *var, unsigned int len)
 		return (-1);
 
 	k = 0;
-	while (class[k] != '\0' && variable[k] != '\0')
+	while (class[k] != '\0' && var[k] != '\0')
 	{
 		if (class[k] != var[k])
 			return (1);

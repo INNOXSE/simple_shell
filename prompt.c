@@ -1,7 +1,7 @@
 #include "shell.c"
 
 /**
- * input_output - checks mode and prints prompt if in interactive mode
+ * io - checks mode and prints prompt if in interactive mode
  * @fd: file stream
  * @buf: buffer
 **/

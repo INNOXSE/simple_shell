@@ -47,8 +47,8 @@ typedef struct built_s
 void prompt(int fp, struct stat buf);
 char *_getroot(FILE *bf);
 char **tokenizer(char *str);
-char *convert(char *command, char *reach, char *location);
-int parent_ch(char *reach, char **toks);
+char *convert(char *command, char *fulldir, char *location);
+int ch(char *fulldir, char **toks);
 void errors(int error);
 
 /* utility func. */
@@ -69,8 +69,8 @@ char *_getenv(const char *class);
 char **copy_env(char **env_copy, unsigned int env_length);
 list_s *locationlist(char *var, list_s *head);
 
-/* prototypes for malloc func. */
-void malloc_all(char **toks, char *location,
-		char *root, char *reach, int time);
-void malloc_dp(char **array, unsigned int length);
+/* prototypes for fr func. */
+void fr_all(char **toks, char *location,
+		char *root, char *fulldir, int time);
+void fr_dp(char **array, unsigned int length);
 #endif /* MAIN_H */
