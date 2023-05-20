@@ -5,9 +5,9 @@
  * @fd: file stream
  * @buf: buffer
 **/
-void prompt(int fd, struct stat buf)
+void prompt(int fp, struct stat buf)
 {
-	fstat(fd, &buf);
+	fstat(fp, &buf);
 
 	if (S_ISCHR(buf.st_mode))
 		_puts(PROMPT);

@@ -7,7 +7,7 @@
  * @len: len of class
  * Return: 1 if strings are equal, -1 if they are not
  */
-int _strcmp(char *class, char *var, unsigned int len)
+int _strcmp(char *class, char *var, unsigned int length)
 {
 	unsigned int var_length;
 	unsigned int k;
@@ -34,12 +34,12 @@ int _strcmp(char *class, char *var, unsigned int len)
  * @len: len to compare up to
  * Return: 1 if strings are equal, -1 if they are not
  */
-int _strncmp(char *class, char *var, unsigned int len)
+int _strncmp(char *class, char *var, unsigned int length)
 {
 	unsigned int k;
 
 	k = 0;
-	while (k < len)
+	while (k < length)
 	{
 		if (class[k] != var[k])
 			return (-1);
