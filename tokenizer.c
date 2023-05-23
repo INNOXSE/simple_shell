@@ -11,7 +11,7 @@ char **tokenizer(char *str)
 	char *tokenz;
 	unsigned int k;
 
-	toks = malloc(sizeof(char) * BUFFER);
+	toks = malloc(sizeof(char* ) * BUFFER);
 	if (toks == NULL)
 	{
 		errors(3);

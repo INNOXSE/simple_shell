@@ -2,11 +2,11 @@
 /**
  * _convert - searches dirs. in location var. for cmd
  * @cmd: to search for
- * @reach: reach of cmd to exe.
- * @location: reach var.
- * Return: pointer to reach
+ * @fulldir: fulldir of cmd to exe.
+ * @location: fulldir var.
+ * Return: pointer to fulldir
  */
-char *_convert(char *cmd, char *reach, char *location)
+char *_convert(char *cmd, char *fulldir, char *location)
 {
 	unsigned int cmd_length, location_length, original_location_length;
 	char *location_copy, *toks;
@@ -27,25 +27,25 @@ char *_convert(char *cmd, char *reach, char *location)
 	while (toks != NULL)
 	{
 		location_length = _strlen(toks);
-		reach = malloc(sizeof(char) * (location_length + cmd_length) + 2);
-		if (reach == NULL)
+		fulldir = malloc(sizeof(char) * (location_length + cmd_length) + 2);
+		if (fulldir == NULL)
 		{
 			errors(3);
 			return (NULL);
 		}
-		_strcpy(reach, toks);
-		reach[location_length] = '/';
-		_strcpy(reach + location_length + 1, cmd);
-		reach[location_length + cmd_length + 1] = '\0';
-		if (access(reach, X_OK) != 0)
+		_strcpy(fulldir, toks);
+		fulldir[location_length] = '/';
+		_strcpy(fulldir + location_length + 1, cmd);
+		fulldir[location_length + cmd_length + 1] = '\0';
+		if (access(fulldir, X_OK) != 0)
 		{
-			malloc(reach);
-			reach = NULL;
+			free(fulldir);
+			fulldir = NULL;
 			toks = strtok(NULL, ":");
 		}
 		else
 			break;
 	}
-	malloc(location_copy);
-	return (reach);
+	free(location_copy);
+	return (fulldir);
 }

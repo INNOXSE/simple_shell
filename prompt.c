@@ -1,13 +1,13 @@
-#include "shell.c"
+#include "shell.h"
 
 /**
- * input_output - checks mode and prints prompt if in interactive mode
+ * io - checks mode and prints prompt if in interactive mode
  * @fd: file stream
  * @buf: buffer
 **/
-void prompt(int fd, struct stat buf)
+void prompt(int fp, struct stat buf)
 {
-	fstat(fd, &buf);
+	fstat(fp, &buf);
 
 	if (S_ISCHR(buf.st_mode))
 		_puts(PROMPT);
@@ -20,9 +20,9 @@ void prompt(int fd, struct stat buf)
  */
 void _puts(char *str)
 {
-	unsigned int len;
+	unsigned int lenght;
 
-	l = _strlen(str);
+	lenght = _strlen(str);
 
-	write(STDOUT_FILENO, str, len);
+	write(STDOUT_FILENO, str, lenght);
 }

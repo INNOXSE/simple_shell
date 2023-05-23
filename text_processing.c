@@ -4,20 +4,20 @@
  * _strcmp - compares two strings to find out if they are exactly the same
  * @class: class supplied by user to search for
  * @var: var to compare against
- * @len: len of class
+ * @lenght: lenght of class
  * Return: 1 if strings are equal, -1 if they are not
  */
-int _strcmp(char *class, char *var, unsigned int len)
+int _strcmp(char *class, char *var, unsigned int length)
 {
 	unsigned int var_length;
 	unsigned int k;
 
 	var_length = _strlen(var);
-	if (var_length != len)
+	if (var_length != length)
 		return (-1);
 
 	k = 0;
-	while (class[k] != '\0' && variable[k] != '\0')
+	while (class[k] != '\0' && var[k] != '\0')
 	{
 		if (class[k] != var[k])
 			return (1);
@@ -34,12 +34,12 @@ int _strcmp(char *class, char *var, unsigned int len)
  * @len: len to compare up to
  * Return: 1 if strings are equal, -1 if they are not
  */
-int _strncmp(char *class, char *var, unsigned int len)
+int _strncmp(char *class, char *var, unsigned int length)
 {
 	unsigned int k;
 
 	k = 0;
-	while (k < len)
+	while (k < length)
 	{
 		if (class[k] != var[k])
 			return (-1);
@@ -60,7 +60,7 @@ char *_strcpy(char *endpoint, char *src)
 	int s = _strlen(src);
 
 	for (k = 0; k <= s; k++)
-		dest[k] = src[k];
+		endpoint[k] = src[k];
 
 	return (endpoint);
 }
