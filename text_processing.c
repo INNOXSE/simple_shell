@@ -4,7 +4,7 @@
  * _strcmp - compares two strings to find out if they are exactly the same
  * @class: class supplied by user to search for
  * @var: var to compare against
- * @len: len of class
+ * @lenght: lenght of class
  * Return: 1 if strings are equal, -1 if they are not
  */
 int _strcmp(char *class, char *var, unsigned int length)
@@ -13,7 +13,7 @@ int _strcmp(char *class, char *var, unsigned int length)
 	unsigned int k;
 
 	var_length = _strlen(var);
-	if (var_length != len)
+	if (var_length != length)
 		return (-1);
 
 	k = 0;
@@ -60,7 +60,7 @@ char *_strcpy(char *endpoint, char *src)
 	int s = _strlen(src);
 
 	for (k = 0; k <= s; k++)
-		dest[k] = src[k];
+		endpoint[k] = src[k];
 
 	return (endpoint);
 }

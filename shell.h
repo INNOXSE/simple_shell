@@ -45,18 +45,18 @@ typedef struct built_s
 } built_s;
 
 void prompt(int fp, struct stat buf);
-char *_getroot(FILE *bf);
+char *_getline(FILE *pf);
 char **tokenizer(char *str);
-char *convert(char *command, char *fulldir, char *location);
-int ch(char *fulldir, char **toks);
+char *_convert(char *command, char *fulldir, char *location);
+int child(char *fulldir, char **toks);
 void errors(int error);
 
-/* utility func. */
+/* text_processoing */
 void _puts(char *str);
 int _strlen(char *s);
 int _strcmp(char *class, char *var, unsigned int length);
 int _strncmp(char *class, char *var, unsigned int length);
-char *_strcpy(char *dest, char *src);
+char *_strcpy(char *endpoint, char *src);
 
 /* builtin prototypes */
 int shell_env(void);
@@ -69,8 +69,8 @@ char *_getenv(const char *class);
 char **copy_env(char **env_copy, unsigned int env_length);
 list_s *locationlist(char *var, list_s *head);
 
-/* prototypes for fr func. */
-void fr_all(char **toks, char *location,
-		char *root, char *fulldir, int time);
-void fr_dp(char **array, unsigned int length);
+/* prototypes for free func. */
+void free_all(char **toks, char *location,
+		char *line, char *fulldir, int time);
+void free_dp(char **array, unsigned int length);
 #endif /* MAIN_H */

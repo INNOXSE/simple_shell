@@ -7,13 +7,13 @@
  */
 int main(void)
 {
-	char *reach = NULL;
+	char *fulldir = NULL;
 
-	reach = _convert("ls", reach);
+	fulldir = _convert("ls", fulldir);
 
-	printf(location : % s\n",reach);
+	printf(location : % s\n",fulldir);
 
-	fr(reach);
+	free(fulldir);
 
 	return (0);
 }

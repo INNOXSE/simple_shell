@@ -1,26 +1,26 @@
 #include "shell.h"
 /**
- * ch - func for ch.c process
+ * child - func for child process
  * @fulldir: fulldir of exec
  * @token: tokenized user input
  * Return: 0 on success
  */
-int ch(char *fulldir, char **toks)
+int child(char *fulldir, char **toks)
 {
-        pident_t ch_pident;
+        pid_t child_pid_t;
         int stat;
         int exec_stat;
         char **envp = env;
 
-        ch_pident = fork();
-        if (ch_pident == -1)
+        child_pid_t = fork();
+        if (child_pid_t == -1)
         {
                 errors(1);
                 exit(EXIT_FAILURE);
         }
-        if (ch_pident == 0)
+        if (child_pid_t == 0)
         {
-                exec_stat = exec(fulldir, toks, envp);
+                exec_stat = execve(fulldir, toks, envp);
                 if (exec_stat == -1)
                         return (-1);
         }

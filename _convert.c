@@ -39,13 +39,13 @@ char *_convert(char *cmd, char *fulldir, char *location)
 		fulldir[location_length + cmd_length + 1] = '\0';
 		if (access(fulldir, X_OK) != 0)
 		{
-			fr(fulldir);
+			free(fulldir);
 			fulldir = NULL;
 			toks = strtok(NULL, ":");
 		}
 		else
 			break;
 	}
-	fr(location_copy);
+	free(location_copy);
 	return (fulldir);
 }

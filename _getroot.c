@@ -1,24 +1,24 @@
 #include "shell.h"
 
 /**
- * _getroot - puts input from user into buffer root
+ * _getline - puts input from user into buffer root
  * @bf: buffer for user input
  * Return: buffer with user input
  */
-char *_getroot(FILE *bf)
+char *_getline(FILE *fp)
 {
-	char *root;
+	char *line;
 	ssize_t read;
 	size_t len;
 
-	root = NULL;
+	line = NULL;
 	len = 0;
-	read = getroot(&root, &len, bf);
+	read = getline(&line, &len, fp);
 	if (read == -1)
 	{
-		fr(root);
+		free(line);
 		exit(EXIT_SUCCESS);
 	}
 
-	return (root);
+	return (line);
 }

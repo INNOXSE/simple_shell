@@ -7,43 +7,43 @@
  */
 int main(void)
 {
-	char *root, *location, *fulldir, **toks;
-	int time, builtin, ch;
+	char *line, *location,  *fulldir, **toks;
+	int time, builtin, lstat;
 	struct stat buf;
 
 	while (TRUE)
 	{
 		prompt(STDIN_FILENO, buf);
-		root = _getroot(stdin);
-		if (_strcmp(root, "\n", 1) == 0)
+		line = _getline(stdin);
+		if (_strcmp(line, "\n", 1) == 0)
 		{
-			fr(root);
+			free(line);
 			continue;
 		}
-		toks = tokenizer(root);
+		toks = tokenizer(line);
 		if (toks[0] == NULL)
 			continue;
 		builtin = builtin_exe(toks);
 		if (builtin == 0 || builtin == -1)
 		{
-			fr(toks);
-			fr(root);
+			free(toks);
+			free(line);
 		}
 		if (builtin == 0)
 			continue;
 		if (builtin == -1)
 			_exit(EXIT_SUCCESS);
-		time = 0; /* 0 fulldir is not fr 'd*/
+		time = 0; /* 0 fulldir is not free 'd*/
 		location = _getenv("LOCATION");
-		fulldir = convert(token[0], fulldir, location);
+		fulldir = _convert(toks[0], fulldir, location);
 		if (fulldir == NULL)
 			fulldir = toks[0];
 		else
-			time = 1; /* if fulldir was malloc'd, time to fr */
-		ch_stat = ch(fulldir, toks);
-		if (ch == -1)
+			time = 1; /* if fulldir was malloc'd, time to free */
+		lstat = child(fulldir, toks);
+		if (lstat == -1)
 			errors(2);
-		fr_all(toks, location, root, fulldir, time);
+		free_all(toks, location, line, fulldir, time);
 	}
 	return (0);
 }

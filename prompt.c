@@ -1,4 +1,4 @@
-#include "shell.c"
+#include "shell.h"
 
 /**
  * io - checks mode and prints prompt if in interactive mode
@@ -20,9 +20,9 @@ void prompt(int fp, struct stat buf)
  */
 void _puts(char *str)
 {
-	unsigned int len;
+	unsigned int lenght;
 
-	l = _strlen(str);
+	lenght = _strlen(str);
 
-	write(STDOUT_FILENO, str, len);
+	write(STDOUT_FILENO, str, lenght);
 }
