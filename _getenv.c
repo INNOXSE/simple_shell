@@ -8,6 +8,7 @@
  */
 char *_getenv(const char *class)
 {
+	extern char **env;
 	char **env_copy;
 	char *var, *value, *location;
 	unsigned int env_length, length, k;

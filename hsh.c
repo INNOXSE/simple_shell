@@ -5,8 +5,10 @@
  * Return: 0 Zero on successul exec.
  *
  */
+extern char **env;
 int main(void)
 {
+
 	char *line, *location,  *fulldir, **toks;
 	int time, builtin, lstat;
 	struct stat buf;
@@ -40,7 +42,7 @@ int main(void)
 			fulldir = toks[0];
 		else
 			time = 1; /* if fulldir was malloc'd, time to free */
-		lstat = child(fulldir, toks);
+		lstat = child(fulldir, toks, **env);
 		if (lstat == -1)
 			errors(2);
 		free_all(toks, location, line, fulldir, time);

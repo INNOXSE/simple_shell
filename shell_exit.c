@@ -1,4 +1,8 @@
 #include "shell.h"
+/* Declare and initialize the env variable */
+extern char **env;  /* Declaration of the external environment variable*/
+char **env = NULL;      /*Definition of the env variable*/
+
 /**
 **shell_exit - exits the header
 **Return: void on success

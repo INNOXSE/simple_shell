@@ -48,7 +48,7 @@ void prompt(int fp, struct stat buf);
 char *_getline(FILE *pf);
 char **tokenizer(char *str);
 char *_convert(char *command, char *fulldir, char *location);
-int child(char *fulldir, char **toks);
+int child(char *fulldir, char **toks, char **env);
 void errors(int error);
 
 /* text_processoing */
@@ -63,11 +63,13 @@ int shell_env(void);
 int shell_exit(void);
 int builtin_exe(char **toks);
 int shell_digit_builtin(built_s builtin[]);
+extern char **env;
 
 /* helper function prototype for linked list location */
 char *_getenv(const char *class);
 char **copy_env(char **env_copy, unsigned int env_length);
 list_s *locationlist(char *var, list_s *head);
+extern char **env;
 
 /* prototypes for free func. */
 void free_all(char **toks, char *location,
