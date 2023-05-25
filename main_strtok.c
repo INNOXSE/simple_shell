@@ -24,8 +24,8 @@ int main(void)
 		k++;
 	}
 
-	fr(str);
-	fr(toks);
+	free(str);
+	free(toks);
 
 	return (0);
 }
