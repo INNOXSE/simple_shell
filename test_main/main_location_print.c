@@ -7,7 +7,9 @@
  */
 int main(void)
 {
-	location_print();
+	char *location = "location";
+
+	locationlist(location, NULL);
 
 	return (0);
 }

@@ -1,4 +1,7 @@
 #include "shell.h"
+char **environ;  /* Declaration of the external environment variable*/
+char **environ = NULL;      /*Definition of the env variable*/
+
 /**
 **shell_exit - exits the header
 **Return: void on success
@@ -20,9 +23,9 @@
 		unsigned int k;
 
 		k = 0;
-		while (env[k] != NULL)
+		while (environ[k] != NULL)
 		{
-			write(STDOUT_FILENO, env[k], _strlen(env[k]));
+			write(STDOUT_FILENO, environ[k], _strlen(environ[k]));
 			write(STDOUT_FILENO, "\n", 1);
 			k++;
 		}
