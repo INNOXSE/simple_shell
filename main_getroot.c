@@ -8,7 +8,7 @@ int main (void)
 {
 	char *line = NULL;
 
-	root = _getline(stdin, root);
+	line = _getline(stdin, line);
 
 	printf("%s\n", line);
 
