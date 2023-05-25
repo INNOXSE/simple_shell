@@ -12,17 +12,17 @@
 #define PROMPT "# "
 #define TRUE 1
 #define BUFFER 1024
-
 /* error str */
+#define ERR_FORK "Unable to fork and create child process\n"
 #define ERR_MALLOC "Unable to malloc space\n"
 #define ERR_PATH "No such file or dir.\n"
-#define ERR_FORK "Unable to fork and create parent_ch process\n"
-extern char **env;
+extern char **environ;
 
 /**
- * struct list_s
- * @value
+ * struct list_s -list linked var
+ * @value -vl
  * @next: Next node
+ *
  * Descrip.: generic linked list for variables.
 **/
 
@@ -33,9 +33,9 @@ typedef struct list_s
 } list_s;
 
 /**
- * struct built_s
+ * struct built_s -builts listnlinked
  * @class: builtin
- * @pointer of func.
+ * @fp: func. of pointer
  * Descrip.: struct for builtin func.
 **/
 typedef struct built_s
@@ -48,31 +48,28 @@ void prompt(int fp, struct stat buf);
 char *_getline(FILE *pf);
 char **tokenizer(char *str);
 char *_convert(char *command, char *fulldir, char *location);
-int child(char *fulldir, char **toks, char **env);
+int child(char *fulldir, char **toks);
 void errors(int error);
 
 /* text_processoing */
 void _puts(char *str);
+char *_strcpy(char *endpoint, char *src);
 int _strlen(char *s);
 int _strcmp(char *class, char *var, unsigned int length);
 int _strncmp(char *class, char *var, unsigned int length);
-char *_strcpy(char *endpoint, char *src);
 
-/* builtin prototypes */
+/* shell_env shell_exit prototypes */
 int shell_env(void);
 int shell_exit(void);
 int builtin_exe(char **toks);
-int shell_digit_builtin(built_s builtin[]);
-extern char **env;
+int shell_digit_builtins(built_s builtin[]);
 
 /* helper function prototype for linked list location */
 char *_getenv(const char *class);
-char **copy_env(char **env_copy, unsigned int env_length);
+char **copy_env(char **environ_copy, unsigned int environ_length);
 list_s *locationlist(char *var, list_s *head);
-extern char **env;
 
 /* prototypes for free func. */
-void free_all(char **toks, char *location,
-		char *line, char *fulldir, int time);
+void free_all(char **toks, char *location, char *line, char *fulldir, int time);
 void free_dp(char **array, unsigned int length);
 #endif /* MAIN_H */
