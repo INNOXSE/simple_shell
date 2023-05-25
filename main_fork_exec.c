@@ -10,7 +10,7 @@ int main(void)
 	pid_t child_pid;
 	char *fname = "/bin/ls";
 	char *newargu[] = { "ls", "-l", "/tmp", NULL };
-	char *newenv[] = { NULL };
+	/*char *newenv[] = { NULL };*/
 	int stat = 0;
 	unsigned int k;
 
@@ -30,7 +30,7 @@ int main(void)
 			exit(EXIT_FAILURE);
 		}	
 		wait(&stat);
-		i++;
+		k++;
 	}
 	return (0);
 }
