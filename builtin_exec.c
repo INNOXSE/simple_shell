@@ -4,7 +4,7 @@
 **@token: arg being passed
 **Return: toks
 **/
-int builtin_exec(char **token)
+int builtin_exec(char **toks)
 {
 	int stat;
 	unsigned int length;
@@ -17,15 +17,15 @@ int builtin_exec(char **token)
 		{NULL, NULL}
 	};
 
-	if (token[0] == NULL)
+	if (toks[0] == NULL)
 		return (1);
 
-	length = _strlen(token[0]);
+	length = _strlen(toks[0]);
 
-	digit = shell_digit_builtin(builtin);
+	digit = shell_digit_builtins(builtin);
 	for (k = 0; k < digit; k++)
 	{
-		if (_strcmp(token[0], builtin[k].class, length) == 0)
+		if (_strcmp(toks[0], builtin[k].class, length) == 0)
 		{
 			stat = (builtin[k].p)();
 			return (stat);
@@ -40,7 +40,7 @@ int builtin_exec(char **token)
 **Return: digit of built-in
 **/
 
-int shell_digit_builtin(built_s builtin[])
+int shell_digit_builtins(built_s builtin[])
 {
 	unsigned int k;
 
