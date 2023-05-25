@@ -18,7 +18,7 @@ int main(void)
 		prompt(STDIN_FILENO, buf);
 		line = _getline(stdin);
 		printf("checkings1  %s \n", line);
-		if (_strcmp(line, "\n", _strlen(line)) == 0)
+		if (_strcmp(line, "\n" 1) == 0)
 		{
 			free(line);
 			continue;
@@ -26,7 +26,7 @@ int main(void)
 		toks = tokenizer(line);
 		if (toks[0] == NULL)
 			continue;
-		builtin_stat = builtin_execute(toks);
+		builtin_stat = (builtin_execute(toks));
 		if (builtin_stat == 0 || builtin_stat == -1)
 		{
 			free(toks);
