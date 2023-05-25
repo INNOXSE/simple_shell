@@ -15,12 +15,12 @@ int main(void)
 
 	list = location_list(location, list);
 
-	currt = list;
+	currentt = list;
 
-	while (currt->next != NULL)
+	while (current->next != NULL)
 	{
 		printf("%s\n", currt->value);
-		currt = currt->next;
+		current = current->next;
 	}
 
 	fr_list(list);
