@@ -9,7 +9,7 @@ int main(void)
 {
 	pid_t child_pid;
 	char *fname = "/bin/ls";
-	char *newargu[] = { "-l", "/tmp", NULL };
+	char *newargu[] = { "ls", "-l", "/tmp", NULL };
 	char *newenv[] = { NULL };
 	int stat = 0;
 	unsigned int k;
@@ -25,8 +25,11 @@ int main(void)
 		}
 		if (child_pid == 0)
 		{
-			exec(fname, newargu, newenv);
-		}	wait(&stat);
+			execv(fname, newargu);
+			perror("execv");
+			exit(EXIT_FAILURE);
+		}	
+		wait(&stat);
 		i++;
 	}
 	return (0);
