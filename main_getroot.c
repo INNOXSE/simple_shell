@@ -12,7 +12,7 @@ int main (void)
 
 	printf("%s\n", line);
 
-	fr(line);
+	free(line);
 
 	return (0);
 }
