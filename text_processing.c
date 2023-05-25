@@ -27,9 +27,9 @@ int _strcmp(char *class, char *var, unsigned int length)
 }
 
 /**
- * _strncmp - compares two strings
+ * _strncmp - compares 2 strings
  * up to given len are the same
- * @class: class supplied by user to search for
+ * @class: class supply by user to search for
  * @var: var to compare against
  * @len: len to compare up to
  * Return: 1 if strings are equal, -1 if they are not
@@ -49,7 +49,7 @@ int _strncmp(char *class, char *var, unsigned int length)
 }
 
 /**
- * *_strcpy - copies string pointed to by src to the buffer pointed to endpoint
+ * *_strcpy - copied string pointed to by src to the buffer pointed to endpoint
  * @endpoint: string destination
  * @src: string source
  * Return: the pointer to endpoint
@@ -66,7 +66,7 @@ char *_strcpy(char *endpoint, char *src)
 }
 /**
  * _strlen - returns the len of a string
- * @s: string to be evaluated
+ * @s: str to be evaluated
  * Return: len of string
  */
 int _strlen(char *s)
