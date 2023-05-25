@@ -9,21 +9,21 @@ int main(void)
 {
 	char *location;
 	list_s *list = NULL;
-	list_s *currt;
+	list_s *current;
 
-	location = _getenv("location");
+	location = _getenv("LOCATION");
 
-	list = location_list(location, list);
+	list = locationlist(location, list);
 
-	currentt = list;
+	current = list;
 
 	while (current->next != NULL)
 	{
-		printf("%s\n", currt->value);
+		printf("%s\n", current->value);
 		current = current->next;
 	}
 
-	fr_list(list);
+	free_all(NULL, NULL, NULL, NULL, 0);
 
 	return (0);
 }
