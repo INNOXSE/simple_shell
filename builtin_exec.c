@@ -25,7 +25,7 @@ int builtin_execute(char **toks)
 	digit = shell_digit_builtins(builtin);
 	for (k = 0; k < digit; k++)
 	{
-		if (_strcmp(toks[0], builtin[k].class, length) == 0)
+		if (_strcmp(toks[0], builtin[k].name, length) == 0)
 		{
 			stat = (builtin[k].p)();
 			return (stat);
@@ -45,7 +45,7 @@ int shell_digit_builtins(built_s builtin[])
 	unsigned int k;
 
 	k = 0;
-	while (builtin[k].class != NULL)
+	while (builtin[k].name != NULL)
 		k++;
 
 	return (k);
