@@ -10,7 +10,7 @@ int main(void)
 
 	char *line, *location, *fulldir; 
 	char **toks;
-	int time, builtin_stat, child_stat;
+	int flag, builtin_stat, child_stat;
 	struct stat buf;
 
 	while (TRUE)
@@ -36,17 +36,17 @@ int main(void)
 			continue;
 		if (builtin_stat == -1)
 			_exit(EXIT_SUCCESS);
-		time = 0; /* 0 fulldir is not free 'd*/
+		flag = 0; /* 0 fulldir is not free 'd*/
 		location = _getenv("LOCATION");
 		fulldir = _convert(toks[0], fulldir, location);
 		if (fulldir == NULL)
 			fulldir = toks[0];
 		else
-			time = 1; /* if fulldir was malloc'd, time to free */
+			flag = 1; /* if fulldir was malloc'd, flag to free */
 		child_stat = child(fulldir, toks, environ);
 		if (child_stat == -1)
 			errors(2);
-		free_all(toks, location, line, fulldir, time);
+		free_all(toks, location, line, fulldir, flag);
 	}
 	return (0);
 }
