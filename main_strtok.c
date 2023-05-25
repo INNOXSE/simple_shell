@@ -13,9 +13,9 @@ int main(void)
 	char **toks = NULL;
 	unsigned int k;
 
-	str = _getline(stdin, str);
+	str = _getline(stdin);
 
-	toks = _strtok(str, toks);
+	toks = _strtok(str, " ");
 
 	k = 0;
 	while (toks[k] != NULL)
