@@ -7,17 +7,7 @@
  */
 int main(void)
 {
-	list_s *list = NULL;
-	char *location = "PATH";
-	list = locationlist(location, list);
-	list_s *current = list;
-
-	while (current != NULL)
-	{
-		printf("%s\n", current->value);
-		current = current->next;
-	}
-
-	fr_list(list);
+	location_print();
+	
 	return (0);
 }
