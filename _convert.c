@@ -11,7 +11,7 @@ char *_convert(char *commad, char *fulldir, char *location)
 	unsigned int commad_length, location_length, original_location_length;
 	char *location_copy, *toks;
 
-	commad_length = _strlen(commad);
+	commad_length = _strlen(command);
 	original_location_length = _strlen(location);
 	location_copy = malloc(sizeof(char) * original_location_length + 1);
 	if (location_copy == NULL)
@@ -20,7 +20,7 @@ char *_convert(char *commad, char *fulldir, char *location)
 		return (NULL);
 	}
 	_strcpy(location_copy, location);
-	/* copy location dir. + commad class and check if it exists */
+	/* copy location dir. + command class and check if it exists */
 	toks = strtok(location_copy, ":");
 	if (toks == NULL)
 		toks = strtok(NULL, ":");
