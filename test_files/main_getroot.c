@@ -1,18 +1,18 @@
 #include "shell.h"
 
 /**
- * main file - getroot and prints line
+ * main file - getline and prints line
  * Return: 0 indicating successful
  */
 int main (void)
 {
-	char *root = NULL;
+	char *line = NULL;
 
-	root = _getroot(stdin, root);
+	root = _getline(stdin, root);
 
-	printf("%s\n", root);
+	printf("%s\n", line);
 
-	fr(root);
+	fr(line);
 
 	return (0);
 }
