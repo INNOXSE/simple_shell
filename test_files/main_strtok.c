@@ -13,7 +13,7 @@ int main(void)
 	char **toks = NULL;
 	unsigned int k;
 
-	str = _getroot(stdin, str);
+	str = _getline(stdin, str);
 
 	toks = _strtok(str, toks);
 
@@ -25,7 +25,7 @@ int main(void)
 	}
 
 	fr(str);
-	fr(tokens);
+	fr(toks);
 
 	return (0);
 }
