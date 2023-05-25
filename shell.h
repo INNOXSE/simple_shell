@@ -40,7 +40,7 @@ typedef struct list_s
 **/
 typedef struct built_s
 {
-	char *class;
+	char *name;
 	int (*p)(void);
 } built_s;
 
@@ -55,8 +55,8 @@ void errors(int error);
 void _puts(char *str);
 char *_strcpy(char *endpoint, char *src);
 int _strlen(char *s);
-int _strcmp(char *class, char *var, unsigned int length);
-int _strncmp(char *class, char *var, unsigned int length);
+int _strcmp(char *name, char *var, unsigned int length);
+int _strncmp(char *name, char *var, unsigned int length);
 
 /* shell_env shell_exit prototypes */
 int shell_env(void);
@@ -65,11 +65,11 @@ int builtin_execute(char **toks);
 int shell_digit_builtins(built_s builtin[]);
 
 /* helper function prototype for linked list location */
-char *_getenv(const char *class);
+char *_getenv(const char *name);
 char **copy_env(char **environ_copy, unsigned int environ_length);
 list_s *locationlist(char *var, list_s *head);
 
 /* prototypes for free func. */
-void free_all(char **toks, char *location, char *line, char *fulldir, int time);
+void free_all(char **toks, char *location, char *line, char *fulldir, int flag);
 void free_dp(char **array, unsigned int length);
-#endif /* MAIN_H */
+#endif /* SHELL_H */
