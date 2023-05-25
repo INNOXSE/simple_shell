@@ -4,7 +4,7 @@
 **@token: arg being passed
 **Return: toks
 **/
-int builtin_exec(char **toks)
+int builtin_execute(char **toks)
 {
 	int stat;
 	unsigned int length;

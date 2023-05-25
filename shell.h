@@ -61,7 +61,7 @@ int _strncmp(char *class, char *var, unsigned int length);
 /* shell_env shell_exit prototypes */
 int shell_env(void);
 int shell_exit(void);
-int builtin_exe(char **toks);
+int builtin_execute(char **toks);
 int shell_digit_builtins(built_s builtin[]);
 
 /* helper function prototype for linked list location */

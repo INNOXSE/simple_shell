@@ -25,7 +25,7 @@ int main(void)
 		toks = tokenizer(line);
 		if (toks[0] == NULL)
 			continue;
-		builtin_stat = builtin_exe(toks);
+		builtin_stat = builtin_execute(toks);
 		if (builtin_stat == 0 || builtin_stat == -1)
 		{
 			free(toks);
