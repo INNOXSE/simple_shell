@@ -1,9 +1,9 @@
 #include "shell.h"
 
 /**
- * io - checks mode and prints prompt if in interactive mode
+ * prompt - checks and prints prompt in interactive mode
  * @fd: file stream
- * @buf: buffer
+ * @buf: buff
 **/
 void prompt(int fp, struct stat buf)
 {
