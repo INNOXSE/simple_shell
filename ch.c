@@ -2,15 +2,15 @@
 /**
  * child - func for child process
  * @fulldir: fulldir of exec
- * @token: tokenized user input
+ * @toks: tokenized user input
  * Return: 0 on success
  */
-int child(char *fulldir, char **toks, char **env)
+int child(char *fulldir, char **toks,)
 {
         pid_t child_pid_t;
 	int stat;
-        int exec_stat;
-        char **envp = env;
+        int execve_stat;
+        char **envp = environ;
 
         child_pid_t = fork();
         if (child_pid_t == -1)
@@ -20,8 +20,8 @@ int child(char *fulldir, char **toks, char **env)
         }
         if (child_pid_t == 0)
         {
-                exec_stat = execve(fulldir, toks, envp);
-                if (exec_stat == -1)
+                execve_stat = execve(fulldir, toks, envp);
+                if (execve_stat == -1)
                         return (-1);
         }
         else
