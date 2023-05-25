@@ -11,9 +11,8 @@ char *_getenv(const char *class)
 	char **environ_copy;
 	char *var, *value, *location;
 	int compare;
-	/* unsigned int location_length, length, k;*/
+	unsigned int environ_length,length, k;
 
-	int environ_length = 0;
 	while (environ[environ_length] != NULL)
 		environ_length++;
 	environ_copy = NULL;
@@ -28,7 +27,7 @@ char *_getenv(const char *class)
 		{
 			value = strtok(var, "=");
 			value = strtok(NULL, "\n ");
-			if (value == '\0')
+			if (*value == '\0')
 			{
 			errors(4);
 			exit(EXIT_FAILURE);

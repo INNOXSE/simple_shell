@@ -42,7 +42,7 @@ int main(void)
 			fulldir = toks[0];
 		else
 			time = 1; /* if fulldir was malloc'd, time to free */
-		child_stat = child(fulldir, toks, env);
+		child_stat = child(fulldir, toks, environ);
 		if (child_stat == -1)
 			errors(2);
 		free_all(toks, location, line, fulldir, time);

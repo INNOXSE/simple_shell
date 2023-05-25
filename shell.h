@@ -48,7 +48,7 @@ void prompt(int fp, struct stat buf);
 char *_getline(FILE *pf);
 char **tokenizer(char *str);
 char *_convert(char *command, char *fulldir, char *location);
-int child(char *fulldir, char **toks, char **env);
+int child(char *fulldir, char **toks, char **environ);
 void errors(int error);
 
 /* text_processoing */
