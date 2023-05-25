@@ -2,16 +2,16 @@
 /**
  * _convert - searches dirs. in location var. for cmd
  * @cmd: to search for
- * @fulldir: fulldir of cmd to exe.
+ * @fulldir: fulldir of commad to exe.
  * @location: fulldir var.
  * Return: pointer to fulldir
  */
-char *_convert(char *cmd, char *fulldir, char *location)
+char *_convert(char *commad, char *fulldir, char *location)
 {
-	unsigned int cmd_length, location_length, original_location_length;
+	unsigned int commad_length, location_length, original_location_length;
 	char *location_copy, *toks;
 
-	cmd_length = _strlen(cmd);
+	commad_length = _strlen(commad);
 	original_location_length = _strlen(location);
 	location_copy = malloc(sizeof(char) * original_location_length + 1);
 	if (location_copy == NULL)
@@ -20,14 +20,14 @@ char *_convert(char *cmd, char *fulldir, char *location)
 		return (NULL);
 	}
 	_strcpy(location_copy, location);
-	/* copy location dir. + cmd class and check if it exists */
+	/* copy location dir. + commad class and check if it exists */
 	toks = strtok(location_copy, ":");
 	if (toks == NULL)
 		toks = strtok(NULL, ":");
 	while (toks != NULL)
 	{
 		location_length = _strlen(toks);
-		fulldir = malloc(sizeof(char) * (location_length + cmd_length) + 2);
+		fulldir = malloc(sizeof(char) * (original_location_length + commad_length) + 2);
 		if (fulldir == NULL)
 		{
 			errors(3);
@@ -35,8 +35,8 @@ char *_convert(char *cmd, char *fulldir, char *location)
 		}
 		_strcpy(fulldir, toks);
 		fulldir[location_length] = '/';
-		_strcpy(fulldir + location_length + 1, cmd);
-		fulldir[location_length + cmd_length + 1] = '\0';
+		_strcpy(fulldir + location_length + 1, commad);
+		fulldir[location_length + commad_length + 1] = '\0';
 		if (access(fulldir, X_OK) != 0)
 		{
 			free(fulldir);
