@@ -5,7 +5,7 @@
  * @toks: tokenized user input
  * Return: 0 on success
  */
-int child(char *fulldir, char **toks,)
+int child(char *fulldir, char **toks, char **env)
 {
         pid_t child_pid_t;
 	int stat;

@@ -8,7 +8,7 @@
 int main(void)
 {
 
-	char *line, *location,  *fulldir, 
+	char *line, *location, *fulldir; 
 	char **toks;
 	int time, builtin_stat, child_stat;
 	struct stat buf;
@@ -25,7 +25,7 @@ int main(void)
 		toks = tokenizer(line);
 		if (toks[0] == NULL)
 			continue;
-		builtin_stat = builtin_exec(toks);
+		builtin_stat = builtin_exe(toks);
 		if (builtin_stat == 0 || builtin_stat == -1)
 		{
 			free(toks);
@@ -42,7 +42,7 @@ int main(void)
 			fulldir = toks[0];
 		else
 			time = 1; /* if fulldir was malloc'd, time to free */
-		child_stat = child(fulldir, toks, **env);
+		child_stat = child(fulldir, toks, env);
 		if (child_stat == -1)
 			errors(2);
 		free_all(toks, location, line, fulldir, time);
