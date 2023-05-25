@@ -5,9 +5,9 @@
  * @class: class supplied by user to search for
  * @var: var to compare against
  * @lenght: lenght of class
- * Return: 1 if strings are equal, -1 if they are not
- */
-int _strcmp(char *class, char *var, unsigned int length)
+ * Return: 1 if strings are equal, -1 if they are noti */
+
+int _strcmp(char *name, char *var, unsigned int length)
 {
 	unsigned int var_length;
 	unsigned int k;
@@ -17,9 +17,9 @@ int _strcmp(char *class, char *var, unsigned int length)
 		return (-1);
 
 	k = 0;
-	while (class[k] != '\0' && var[k] != '\0')
+	while (name[k] != '\0' && var[k] != '\0')
 	{
-		if (class[k] != var[k])
+		if (name[k] != var[k])
 			return (1);
 		k++;
 	}
@@ -34,14 +34,14 @@ int _strcmp(char *class, char *var, unsigned int length)
  * @len: len to compare up to
  * Return: 1 if strings are equal, -1 if they are not
  */
-int _strncmp(char *class, char *var, unsigned int length)
+int _strncmp(char *name, char *var, unsigned int length)
 {
 	unsigned int k;
 
 	k = 0;
 	while (k < length)
 	{
-		if (class[k] != var[k])
+		if (name[k] != var[k])
 			return (-1);
 		k++;
 	}
