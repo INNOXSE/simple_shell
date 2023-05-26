@@ -7,24 +7,27 @@
  */
 int child(char *fulldir, char **toks, char **environ)
 {
-        pid_t child_pid_t;
-	int stat;
-        int execve_stat;
-        char **envp = environ;
+        pid_t child_pid;
+	int status;
+	int execve_status;
+	char **envp = environ;
 
-        child_pid_t = fork();
-        if (child_pid_t == -1)
+        child_pid = fork();
+        if (child_pid == -1)
         {
                 errors(1);
                 exit(EXIT_FAILURE);
         }
-        if (child_pid_t == 0)
+        if (child_pid == 0)
         {
-                execve_stat = execve(fulldir, toks, envp);
-                if (execve_stat == -1)
-                        return (-1);
+                execve_status = execve(fulldir, toks, envp);
+		if (execve_status == -1)
+		{
+			errors(2);
+			exit(EXIT_FAILURE);
+		}
         }
         else
-                wait(&stat);
+                wait(&status);
 	return(0);
 }
