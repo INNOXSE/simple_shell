@@ -1,67 +1,75 @@
-#ifndef SHELL_H
-#define SHELL_H
+#ifndef HOLBERTON_H
+#define HOLBERTON_H
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <sys/wait.h>
 #include <string.h>
-
-extern char **environ; /* Declaration of environ variable */
+#include <unistd.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <sys/wait.h>
 
 #define BUFFER 1024
+#define TRUE 1
 #define PROMPT "$ "
-#define ERR_FORK "Error: fork failed\n"
-#define ERR_MALLOC "Error: malloc failed\n"
-#define ERR_PATH "Error: empty PATH variable\n"
+/* error strings */
+#define ERR_MALLOC "Unable to malloc space\n"
+#define ERR_FORK "Unable to fork and create child process\n"
+#define ERR_PATH "No such file or directory\n"
+extern char **environ;
 
-/* Struct for built-in functions */
+/**
+ * struct list_s - linked list of variables
+ * @value: value
+ * @next: pointer to next node
+ *
+ * Description: generic linked list struct for variables.
+**/
+typedef struct list_s
+{
+	char *value;
+	struct list_s *next;
+} list_s;
+
+/**
+ * struct built_s - linked list of builtins
+ * @name: name of builtin
+ * @p: pointer to function
+ *
+ * Description: struct for builtin functions.
+**/
 typedef struct built_s
 {
-    char *name;
-    int (*p)(void);
-} built_t;
+	char *name;
+	int (*p)(void);
+} built_s;
 
-/* Prompt */
-void prompt(int fp, struct stat buf);
-void _puts(char *str);
-
-/* Input */
+void prompt(int fd, struct stat buf);
 char *_getline(FILE *fp);
-
-/* Tokenizer */
 char **tokenizer(char *str);
-
-/* Built-in Execution */
-int builtin_execute(char **toks, struct built_t builtin);
-int shell_digit_builtins(struct built_t builtin[]);
-
-/* Child Process */
-int child(char *fulldir, char **toks, char **environ);
-
-/* Error Handling */
+char *_which(char *command, char *fullpath, char *path);
+int child(char *fullpath, char **tokens);
 void errors(int error);
 
-/* Text Processing */
-int _strcmp(char *name, char *var, unsigned int length);
-int _strncmp(char *name, char *var, unsigned int length);
-char *_strcpy(char *endpoint, char *src);
-unsigned int _strlen(char *str);
+/* utility functions */
+void _puts(char *str);
+int _strlen(char *s);
+int _strcmp(char *name, char *variable, unsigned int length);
+int _strncmp(char *name, char *variable, unsigned int length);
+char *_strcpy(char *dest, char *src);
 
-/* Exit and Environment */
-int shell_exit(void);
+/* prototypes for builtins */
 int shell_env(void);
+int shell_exit(void);
+int builtin_execute(char **tokens);
+int shell_num_builtins(built_s builtin[]);
 
-/* Freeing Memory */
-void free_all(char **toks, char *location, char *line, char *fulldir, int time);
-void free_dp(char **array, unsigned int length);
-
-/* Helper Functions */
-char *_convert(char *command, char *fulldir, char *location);
-char *_getenv(const char *class);
+/* prototypes for the helper functions for path linked list */
+char *_getenv(const char *name);
 char **copy_env(char **environ_copy, unsigned int environ_length);
+list_s *pathlist(char *variable, list_s *head);
 
-#endif /* SHELL_H */
->>>>>>> b7442c2fb737af381673d0b951d4d905c9e2b7cc
+/* prototypes for free functions */
+void free_all(char **tokens, char *path, char *line, char *fullpath, int flag);
+void free_dp(char **array, unsigned int length);
+#endif /* HOLBERTON_H */
