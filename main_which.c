@@ -8,7 +8,7 @@ int main(void)
 {
 	char *full_path = NULL;
 
-	full_path = _which("ls", full_path);
+	full_path = _which("ls", full_path, path);
 
 	printf("Path: %s\n", full_path);
 
