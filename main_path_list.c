@@ -1,7 +1,7 @@
-#include "holberton.h"
+#include "shell.h"
 
 /**
- * main - uses path_list to put PATH directories in linked list
+ * main -  puting PATH directories in linked list
  * Return: Always 0.
  */
 int main(void)
