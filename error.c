@@ -1,29 +1,30 @@
 #include "shell.h"
 
 /**
- * errors - prts errors based on thier case
- * @error: error no is assoc. with perror stmt
- * Return: void on indicated success
+ * errors - prints errors based on their case
+ * @error: error number associated with perror statement
+ * Return: void
  */
 void errors(int error)
 {
 	switch (error)
 	{
-	case 1: /* writes fork error to standarderror */
-		write(STDERR_FILENO, ERR_FORK, _strlen(ERR_FORK));
+	case 1:
+		_puts(ERR_FORK);
 		perror("Error");
-		break;
+		exit(EXIT_FAILURE);
 
-	case 2: /* writes execve error to standarderrorderr */
+	case 2:
 		perror("Error");
-		break;
+		exit(EXIT_FAILURE);
 
-	case 3: /* writes malloc error to stderr */
-		write(STDERR_FILENO, ERR_MALLOC, _strlen(ERR_MALLOC));
-		break;
-	case 4: /* writes empty path error to standarderrorderrderr */
-		write(STDERR_FILENO, ERR_PATH, _strlen(ERR_PATH));
-		break;
+	case 3:
+		_puts(ERR_MALLOC);
+		exit(EXIT_FAILURE);
+
+	case 4:
+		_puts(ERR_PATH);
+		exit(EXIT_FAILURE);
 
 	default:
 		return;
