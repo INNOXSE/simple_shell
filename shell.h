@@ -22,7 +22,7 @@ typedef struct built_s
 {
     char *name;
     int (*p)(void);
-} built_t;
+} struct built_t;
 
 /* Prompt */
 void prompt(int fp, struct stat buf);
@@ -35,8 +35,8 @@ char *_getline(FILE *fp);
 char **tokenizer(char *str);
 
 /* Built-in Execution */
-int builtin_execute(char **toks, built_t builtin);
-int shell_digit_builtins(built_t builtin[]);
+int builtin_execute(char **toks, struct built_t builtin);
+int shell_digit_builtins(struct built_t builtin[]);
 
 /* Child Process */
 int child(char *fulldir, char **toks, char **environ);
