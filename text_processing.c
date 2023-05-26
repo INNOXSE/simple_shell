@@ -1,80 +1,78 @@
 #include "shell.h"
 
 /**
- * _strcmp - compares two strings to find out if they are exactly the same
- * @class: class supplied by user to search for
- * @var: var to compare against
- * @lenght: lenght of class
- * Return: 1 if strings are equal, -1 if they are noti */
-
+ * _strcmp - compares two strings to check if they are equal
+ * @name: first string
+ * @var: second string
+ * @length: length of string to compare
+ * Return: 0 if strings are equal, 1 otherwise
+ */
 int _strcmp(char *name, char *var, unsigned int length)
 {
-	unsigned int var_length;
-	unsigned int k;
+	unsigned int k = 0;
 
-	var_length = _strlen(var);
-	if (var_length != length)
-		return (-1);
-
-	k = 0;
-	while (name[k] != '\0' && var[k] != '\0')
+	while (k < length)
 	{
 		if (name[k] != var[k])
 			return (1);
 		k++;
 	}
+
 	return (0);
 }
 
 /**
- * _strncmp - compares 2 strings
- * up to given len are the same
- * @class: class supply by user to search for
- * @var: var to compare against
- * @len: len to compare up to
- * Return: 1 if strings are equal, -1 if they are not
+ * _strncmp - compares two strings up to a given length
+ * @name: first string
+ * @var: second string
+ * @length: length to compare up to
+ * Return: 0 if strings are equal, 1 otherwise
  */
 int _strncmp(char *name, char *var, unsigned int length)
 {
-	unsigned int k;
+	unsigned int k = 0;
 
-	k = 0;
 	while (k < length)
 	{
 		if (name[k] != var[k])
-			return (-1);
+			return (1);
 		k++;
 	}
-	return (1);
+
+	return (0);
 }
 
 /**
- * *_strcpy - copied string pointed to by src to the buffer pointed to endpoint
- * @endpoint: string destination
- * @src: string source
- * Return: the pointer to endpoint
+ * _strcpy - copies a string from source to destination
+ * @destination: destination string
+ * @source: source string
+ * Return: pointer to destination string
  */
-char *_strcpy(char *endpoint, char *src)
+char *_strcpy(char *destination, char *source)
 {
-	int k;
-	int s = _strlen(src);
+	unsigned int k = 0;
 
-	for (k = 0; k <= s; k++)
-		endpoint[k] = src[k];
-
-	return (endpoint);
-}
-/**
- * _strlen - returns the len of a string
- * @s: str to be evaluated
- * Return: len of string
- */
-int _strlen(char *s)
-{
-	int k = 0;
-
-	while (s[k] != '\0')
+	while (source[k] != '\0')
+	{
+		destination[k] = source[k];
 		k++;
+	}
+	destination[k] = '\0';
 
-	return (k);
+	return (destination);
+}
+
+/**
+ * _strlen - returns the length of a string
+ * @str: string to be evaluated
+ * Return: length of string
+ */
+unsigned int _strlen(char *str)
+{
+	unsigned int length = 0;
+
+	while (str[length] != '\0')
+		length++;
+
+	return (length);
 }
