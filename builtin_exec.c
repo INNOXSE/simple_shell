@@ -41,7 +41,7 @@ int builtin_execute(char **toks, built_t *builtin)
  * @builtin: array of built-in functions
  * Return: number of built-in functions
  */
-unsigned int shell_digit_builtins(built_t builtin[])
+unsigned int shell_digit_builtins(built_t *builtin[])
 {
 	unsigned int k = 0;
 
