@@ -5,7 +5,7 @@
  * @toks: array of tokens
  * Return: 0 if successful, 1 otherwise
  */
-int builtin_execute(char **toks)
+int builtin_execute(char **toks, built_t *builtin)
 {
 	int status;
 	unsigned int length;
