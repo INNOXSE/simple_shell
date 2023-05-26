@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * main - prints the environment
+ * main - prints the environ
  *
  * Return: Always 0.
  */
