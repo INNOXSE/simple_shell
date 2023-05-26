@@ -2,8 +2,8 @@
 
 /**
  * prompt - checks and prints prompt in interactive mode
- * @fd: file stream
- * @buf: buff
+ * @fp: file stream
+ * @buf: buffer
 **/
 void prompt(int fp, struct stat buf)
 {
@@ -14,15 +14,15 @@ void prompt(int fp, struct stat buf)
 }
 
 /**
- * _puts - prints a string without a \n
+ * _puts - prints a string without a newline character
  * @str: string to print
  * Return: void
  */
 void _puts(char *str)
 {
-	unsigned int lenght;
+	unsigned int length;
 
-	lenght = _strlen(str);
+	length = _strlen(str);
 
-	write(STDOUT_FILENO, str, lenght);
+	write(STDOUT_FILENO, str, length);
 }
