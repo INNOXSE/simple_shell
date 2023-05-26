@@ -36,7 +36,7 @@ char **tokenizer(char *str);
 
 /* Built-in Execution */
 int builtin_execute(char **toks, built_t builtin);
-int shell_digit_builtins(built_t builtin);
+int shell_digit_builtins(built_t builtin[]);
 
 /* Child Process */
 int child(char *fulldir, char **toks, char **environ);
