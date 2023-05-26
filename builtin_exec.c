@@ -5,14 +5,13 @@
  * @toks: array of tokens
  * Return: 0 if successful, 1 otherwise
  */
-int builtin_execute(char **toks, built_t *builtin)
+int builtin_execute(char **toks, built_t builtin)
 {
-	int status;
 	unsigned int length;
 	unsigned int num_builtins;
 	unsigned int k;
 
-	struct built_t builtin[] = {
+	struct built_t *builtin[] = {
 		{"exit", shell_exit},
 		{"env", shell_env},
 		{NULL, NULL}
@@ -28,12 +27,13 @@ int builtin_execute(char **toks, built_t *builtin)
 	{
 		if (_strcmp(toks[0], builtin[k].name, length) == 0)
 		{
-			status = (builtin[k].p)();
-			return (status);
+			return (builtin[k].p)();
+		}
+			return (0);
 		}
 	}
 
-	return (1);
+	return (0);
 }
 
 /**
@@ -41,7 +41,7 @@ int builtin_execute(char **toks, built_t *builtin)
  * @builtin: array of built-in functions
  * Return: number of built-in functions
  */
-unsigned int shell_digit_builtins(built_t *builtin[])
+unsigned int shell_digit_builtins(built_t builtin[])
 {
 	unsigned int k = 0;
 
