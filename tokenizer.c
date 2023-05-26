@@ -1,35 +1,34 @@
-<<<<<<< HEAD
-=======
-#include "shell.h"
+#include "holberton.h"
 
 /**
- * tokenizer - tokenizes a string
- * @str: input string
+ * tokenizer - tokenizes string
+ * @str: user input
  * Return: pointer to array of tokens
  */
 char **tokenizer(char *str)
 {
-	char **toks;
+	char **tokens;
 	char *token;
-	unsigned int k = 0;
+	unsigned int i;
 
-	toks = malloc(sizeof(char *) * BUFFER);
-	if (toks == NULL)
+	tokens = malloc(sizeof(char) * BUFFER);
+	if (tokens == NULL)
 	{
 		errors(3);
 		exit(EXIT_FAILURE);
 	}
 
-	token = strtok(str, " \t\n\r");
+	token = strtok(str, "\n\t\r ");
+
+	i = 0;
 	while (token != NULL)
 	{
-		toks[k] = token;
-		token = strtok(NULL, " \t\n\r");
-		k++;
+		tokens[i] = token;
+		token = strtok(NULL, "\n\t\r ");
+		i++;
 	}
 
-	toks[k] = NULL;
+	tokens[i] = NULL;
 
-	return (toks);
+	return (tokens);
 }
->>>>>>> b7442c2fb737af381673d0b951d4d905c9e2b7cc
