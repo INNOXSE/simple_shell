@@ -1,12 +1,12 @@
 #include "shell.h"
 
-char **environ; // Definition of environ variable
+char **environ; /* Definition of environ variable */
 
 int main(void)
 {
     char *line, **toks;
-    struct stat buf;
-    int fp, stat;
+    struct status buf;
+    int fp, status;
 
     fp = STDIN_FILENO;
     prompt(fp, buf);
@@ -43,5 +43,5 @@ int main(void)
     }
 
     free(line);
-    return stat;
+    return status;
 }
