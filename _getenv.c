@@ -9,7 +9,7 @@ char *_getenv(const char *name)
 	char **environ_copy;
 	char *variable, *value, *path;
 	int compare;
-	unsigned int path_length, environ_length, length, i;
+	unsigned int path_length, environ_length, length, k;
 
 	environ_length = 0;
 	while (environ[environ_length] != NULL)
@@ -18,10 +18,10 @@ char *_getenv(const char *name)
 	environ_copy = copy_env(environ_copy, environ_length);
 
 	length = _strlen((char *)name);
-	i = 0;
-	while (environ_copy[i] != NULL)
+	k = 0;
+	while (environ_copy[k] != NULL)
 	{
-		variable = environ_copy[i];
+		variable = environ_copy[k];
 		compare = _strncmp((char *)name, variable, length);
 		if (compare == 1)
 		{
@@ -43,7 +43,7 @@ char *_getenv(const char *name)
 			free_dp(environ_copy, environ_length);
 			return (path);
 		}
-		i++;
+		k++;
 	}
 	return (NULL);
 }
@@ -58,7 +58,7 @@ char **copy_env(char **environ_copy, unsigned int environ_length)
 {
 	char *variable;
 	unsigned int variable_length;
-	unsigned int i;
+	unsigned int k;
 
 	environ_copy = malloc(sizeof(char **) * (environ_length));
 	if (environ_copy == NULL)
@@ -67,20 +67,20 @@ char **copy_env(char **environ_copy, unsigned int environ_length)
 		return (NULL);
 	}
 
-	i = 0;
-	while (i < environ_length)
+	k = 0;
+	while (k < environ_length)
 	{
-		variable = environ[i];
+		variable = environ[k];
 		variable_length = _strlen(variable);
 
 		environ_copy[i] = malloc(sizeof(char) * variable_length + 1);
-		if (environ_copy[i] == NULL)
+		if (environ_copy[k] == NULL)
 		{
 			errors(3);
 			return (NULL);
 		}
-		_strcpy(environ_copy[i], environ[i]);
-		i++;
+		_strcpy(environ_copy[k], environ[k]);
+		k++;
 	}
 
 	return (environ_copy);
