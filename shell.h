@@ -22,7 +22,7 @@ typedef struct built_s
 {
     char *name;
     int (*p)(void);
-} struct built_t;
+} built_t;
 
 /* Prompt */
 void prompt(int fp, struct stat buf);
