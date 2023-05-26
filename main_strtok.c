@@ -1,13 +1,14 @@
-#include "shell.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include "holberton.h"
 
 /**
- * path_print - Print directories in the PATH environment variable
+ * main - uses strtok to print tokens
+ * @ac: number of arguments
+ * @av: pointer to array of strings
+ * Return: 0 on success
  */
-void path_print(void)
+int main(void)
 {
+<<<<<<< HEAD
 	char *path_env = getenv("PATH");
 
 	if (path_env == NULL)
@@ -44,6 +45,25 @@ void path_print(void)
 int main(int argc, char *argv[])
 {
 	path_print();
+=======
+	char *str = NULL;
+	char **tokens = NULL;
+	unsigned int k;
+
+	str = _getline(stdin, str);
+
+	tokens = _strtok(str, tokens);
+
+	k = 0;
+	while (tokens[k] != NULL)
+	{
+		printf("%s\n", tokens[i]);
+		k++;
+	}
+
+	free(str);
+	free(tokens);
+>>>>>>> c9e95f35ae2db57d52d2eaef01cc73db1b6f6245
 
 	return (0);
 }
