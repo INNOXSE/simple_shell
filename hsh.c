@@ -17,10 +17,10 @@ int main(void)
 	{
 		prompt(STDIN_FILENO, buf);
 		line = _getline(stdin);
+		if (_strcmp(line, "\n", 1) == 0)
 		printf("checkings1  %s \n", line);
-		if (_strcmp(line, "\n", _strlen(line)) == 0)
-		{
-			free(line);
+	}
+		free(line);
 			continue;
 		}
 		toks = tokenizer(line);
