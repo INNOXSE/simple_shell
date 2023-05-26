@@ -16,13 +16,13 @@ int main(void)
         toks = tokenizer(line);
         if (toks != NULL && toks[0] != NULL)
         {
-            built_t builtin[] = {
+            struct built_t builtin[] = {
                 {"exit", shell_exit},
                 {"env", shell_env},
                 {NULL, NULL}
             };
 
-            if (builtin_execute(toks, built_t builtin) == 1)
+            if (builtin_execute(toks, struct built_t builtin) == 1)
             {
                 char *command = toks[0];
                 char *location = _getenv("PATH");
@@ -43,5 +43,5 @@ int main(void)
     }
 
     free(line);
-    return (0);
+    return (stat);
 }
