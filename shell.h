@@ -48,7 +48,7 @@ void errors(int error);
 int _strcmp(char *name, char *var, unsigned int length);
 int _strncmp(char *name, char *var, unsigned int length);
 char *_strcpy(char *endpoint, char *src);
-unsigned int _strlen(char *s);
+unsigned int _strlen(char *str);
 
 /* Exit and Environment */
 int shell_exit(void);
