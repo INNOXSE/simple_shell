@@ -1,14 +1,15 @@
 #include "shell.h"
+
 /**
-**builtin_exec - exec. the built in functs
-**@token: arg being passed
-**Return: toks
-**/
+ * builtin_execute - executes the built-in functions
+ * @toks: array of tokens
+ * Return: 0 if successful, 1 otherwise
+ */
 int builtin_execute(char **toks)
 {
-	int stat;
+	int status;
 	unsigned int length;
-	unsigned int digit;
+	unsigned int num_builtins;
 	unsigned int k;
 
 	built_s builtin[] = {
@@ -21,32 +22,32 @@ int builtin_execute(char **toks)
 		return (1);
 
 	length = _strlen(toks[0]);
+	num_builtins = shell_digit_builtins(builtin);
 
-	digit = shell_digit_builtins(builtin);
-	for (k = 0; k < digit; k++)
+	for (k = 0; k < num_builtins; k++)
 	{
 		if (_strcmp(toks[0], builtin[k].name, length) == 0)
 		{
-			stat = (builtin[k].p)();
-			return (stat);
+			status = (builtin[k].p)();
+			return (status);
 		}
 	}
+
 	return (1);
 }
 
 /**
-**shell_digit_builtin - this check digit built-in
-**@builtin: to be counted
-**Return: digit of built-in
-**/
-
-int shell_digit_builtins(built_s builtin[])
+ * shell_digit_builtins - counts the number of built-in functions
+ * @builtin: array of built-in functions
+ * Return: number of built-in functions
+ */
+unsigned int shell_digit_builtins(built_s builtin[])
 {
-	unsigned int k;
+	unsigned int k = 0;
 
-	k = 0;
 	while (builtin[k].name != NULL)
 		k++;
 
 	return (k);
 }
+
