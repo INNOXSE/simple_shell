@@ -1,30 +1,28 @@
 #include "shell.h"
 
 /**
- * tokenizer - tokenizes str
- * @str: input user
- * Return: pointr to array of toks
+ * tokenizer - tokenizes a string
+ * @str: input string
+ * Return: pointer to array of tokens
  */
 char **tokenizer(char *str)
 {
 	char **toks;
-	char *tokenz;
-	unsigned int k;
+	char *token;
+	unsigned int k = 0;
 
-	toks = malloc(sizeof(char* ) * BUFFER);
+	toks = malloc(sizeof(char *) * BUFFER);
 	if (toks == NULL)
 	{
 		errors(3);
 		exit(EXIT_FAILURE);
 	}
 
-	tokenz = strtok(str, "\n\t\r ");
-
-	k = 0;
-	while (tokenz != NULL)
+	token = strtok(str, " \t\n\r");
+	while (token != NULL)
 	{
-		toks[k] = tokenz;
-		tokenz = strtok(NULL, "\n\t\r ");
+		toks[k] = token;
+		token = strtok(NULL, " \t\n\r");
 		k++;
 	}
 
