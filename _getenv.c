@@ -1,4 +1,5 @@
 #include "shell.h"
+
 /**
  * _getenv - gets an environment variable
  * @name: environment variable to get
@@ -23,17 +24,17 @@ char *_getenv(const char *name)
 	{
 		variable = environ_copy[k];
 		compare = _strncmp((char *)name, variable, length);
-		if (compare == 1)
+		if (compare == 0)
 		{
 			value = strtok(variable, "=");
 			value = strtok(NULL, "\n ");
-			if (value == '\0')
+			if (value == NULL)
 			{
 				errors(4);
 				exit(EXIT_FAILURE);
 			}
 			path_length = _strlen(value);
-			path = malloc(sizeof(char) * path_length + 1);
+			path = malloc(sizeof(char) * (path_length + 1));
 			if (path == NULL)
 			{
 				errors(3);
@@ -60,7 +61,7 @@ char **copy_env(char **environ_copy, unsigned int environ_length)
 	unsigned int variable_length;
 	unsigned int k;
 
-	environ_copy = malloc(sizeof(char **) * (environ_length));
+	environ_copy = malloc(sizeof(char *) * (environ_length));
 	if (environ_copy == NULL)
 	{
 		errors(3);
@@ -73,7 +74,7 @@ char **copy_env(char **environ_copy, unsigned int environ_length)
 		variable = environ[k];
 		variable_length = _strlen(variable);
 
-		environ_copy[i] = malloc(sizeof(char) * variable_length + 1);
+		environ_copy[k] = malloc(sizeof(char) * (variable_length + 1));
 		if (environ_copy[k] == NULL)
 		{
 			errors(3);
