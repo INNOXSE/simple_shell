@@ -6,7 +6,7 @@ int main(void)
 {
     char *line, **toks;
     struct stat buf;
-    int fp, status;
+    int fp, stat;
 
     fp = STDIN_FILENO;
     prompt(fp, buf);
@@ -22,7 +22,7 @@ int main(void)
                 {NULL, NULL}
             };
 
-            if (builtin_execute(toks, builtin) == 1)
+            if (builtin_execute(toks, built_t builtin) == 1)
             {
                 char *command = toks[0];
                 char *location = _getenv("PATH");
