@@ -5,7 +5,7 @@
  * @toks: array of tokens
  * Return: 0 if successful, 1 otherwise
  */
-int builtin_execute(char **toks, built_t builtin)
+int builtin_execute(char **toks, struct built_t builtin)
 {
 	unsigned int length;
 	unsigned int num_builtins;
@@ -39,7 +39,7 @@ int builtin_execute(char **toks, built_t builtin)
  * @builtin: array of built-in functions
  * Return: number of built-in functions
  */
-unsigned int shell_digit_builtins(built_t builtin[])
+unsigned int shell_digit_builtins(struct built_t builtin[])
 {
 	unsigned int k = 0;
 
