@@ -1,30 +1,46 @@
 #include "shell.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 /**
- * main -  strtok to print tokens
- * @ac: number of arg
- * @av: pointer to array of strings
- * Return: 0 on success
+ * path_print - Print directories in the PATH environment variable
  */
-int main(void)
+void path_print(void)
 {
-	char *str = NULL;
-	char **tokens = NULL;
-	unsigned int k;
-
-	str = _getline(stdin, str);
-
-	tokens = _strtok(str, tokens);
-
-	k = 0;
-	while (tokens[k] != NULL)
+	char *path_env = getenv("PATH");  /* Get the value of the PATH environment variable */
+	if (path_env == NULL)
 	{
-		printf("%s\n", tokens[k]);
-		k++;
+		printf("PATH environment variable not found\n");
+		return;
 	}
 
-	free(str);
-	free(tokens);
+	char *path_copy = strdup(path_env);  /* Create a copy of the PATH string */
+	if (path_copy == NULL)
+	{
+		printf("Memory allocation failed\n");
+		return;
+	}
 
-	return (0);
+	char *directory = strtok(path_copy, ":");  /* Tokenize the PATH string using ':' delimiter */
+	while (directory != NULL)
+	{
+		printf("%s\n", directory);  /* Print each directory */
+		directory = strtok(NULL, ":");
+	}
+
+	free(path_copy);  /* Free the memory allocated for the copy of the PATH string */
+}
+
+/**
+ * main - Entry point of the program
+ * @argc: The number of command-line arguments
+ * @argv: An array of strings containing the command-line arguments
+ * Return: 0 on success
+ */
+int main(int argc, char *argv[])
+{
+	path_print();
+
+	return 0;
 }
