@@ -5,7 +5,7 @@ char **environ; /* Definition of environ variable */
 int main(void)
 {
     char *line, **toks;
-    struct status buf;
+    struct stat buf;
     int fp, status;
 
     fp = STDIN_FILENO;
