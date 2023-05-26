@@ -18,15 +18,18 @@ int main(void)
 		prompt(STDIN_FILENO, buf);
 		line = _getline(stdin);
 		if (_strcmp(line, "\n", 1) == 0)
-		printf("checkings1  %s \n", line);
-	}
+		printf("checkings1  %s \n", line);	}
 		free(line);
+		if (_strcmp(line, "\n" 1) == 0)
+		{
+			free(line);
+
 			continue;
 		}
 		toks = tokenizer(line);
 		if (toks[0] == NULL)
 			continue;
-		builtin_stat = builtin_execute(toks);
+		builtin_stat = (builtin_execute(toks));
 		if (builtin_stat == 0 || builtin_stat == -1)
 		{
 			free(toks);
