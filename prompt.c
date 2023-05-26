@@ -1,22 +1,20 @@
-<<<<<<< HEAD
-=======
-#include "shell.h"
+#include "holberton.h"
 
 /**
- * prompt - checks and prints prompt in interactive mode
- * @fp: file stream
+ * prompt - checks mode and prints prompt if in interactive mode
+ * @fd: file stream
  * @buf: buffer
 **/
-void prompt(int fp, struct stat buf)
+void prompt(int fd, struct stat buf)
 {
-	fstat(fp, &buf);
+	fstat(fd, &buf);
 
 	if (S_ISCHR(buf.st_mode))
 		_puts(PROMPT);
 }
 
 /**
- * _puts - prints a string without a newline character
+ * _puts - prints a string without a \n
  * @str: string to print
  * Return: void
  */
@@ -28,4 +26,3 @@ void _puts(char *str)
 
 	write(STDOUT_FILENO, str, length);
 }
->>>>>>> b7442c2fb737af381673d0b951d4d905c9e2b7cc
