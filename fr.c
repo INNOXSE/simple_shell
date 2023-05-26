@@ -1,12 +1,12 @@
 #include "shell.h"
 
 /**
- * free_all - frees all malloc'd space at end of main loop
+ * free_all - frees all dynamically allocated memory
  * @toks: pointer to tokens array
- * @location: pointer to location var
+ * @location: pointer to location string
  * @line: pointer to user input buffer
- * @fulldir: pointer to fulldir
- * @time: time marking fulldir was malloc'd
+ * @fulldir: pointer to fulldir string
+ * @time: flag indicating if fulldir was dynamically allocated
  * Return: void
  */
 void free_all(char **toks, char *location, char *line, char *fulldir, int time)
@@ -19,16 +19,15 @@ void free_all(char **toks, char *location, char *line, char *fulldir, int time)
 }
 
 /**
- * free_dp - free double pointer
- * @arry: double pointer to free
+ * free_dp - frees a double pointer
+ * @array: double pointer to free
  * @length: length of double pointer
- * Return: void on success
+ * Return: void
  */
 void free_dp(char **array, unsigned int length)
 {
-	unsigned int k;
+	unsigned int k = 0;
 
-	k = 0;
 	while (k < length)
 	{
 		free(array[k]);
