@@ -1,75 +1,64 @@
 #ifndef SHELL_H
 #define SHELL_H
 
-#include <stdlib.h>
-#include <string.h>
 #include <stdio.h>
-#include <sys/stat.h>
-#include <sys/wait.h>
+#include <stdlib.h>
 #include <unistd.h>
 #include <sys/types.h>
+#include <sys/stat.h>
+#include <sys/wait.h>
+#include <string.h>
 
-#define PROMPT "# "
-#define TRUE 1
 #define BUFFER 1024
-/* error str */
-#define ERR_FORK "Unable to fork and create child process\n"
-#define ERR_MALLOC "Unable to malloc space\n"
-#define ERR_PATH "No such file or dir.\n"
-extern char **environ;
+#define PROMPT "$ "
+#define ERR_FORK "Error: fork failed\n"
+#define ERR_MALLOC "Error: malloc failed\n"
+#define ERR_PATH "Error: empty PATH variable\n"
 
-/**
- * struct list_s -list linked var
- * @value -vl
- * @next: Next node
- *
- * Descrip.: generic linked list for variables.
-**/
-
-typedef struct list_s
-{
-	char *value;
-	struct list_s *next;
-} list_s;
-
-/**
- * struct built_s -builts listnlinked
- * @class: builtin
- * @fp: func. of pointer
- * Descrip.: struct for builtin func.
-**/
+/* Struct for built-in functions */
 typedef struct built_s
 {
 	char *name;
 	int (*p)(void);
-} built_s;
+} built_t;
 
+/* Prompt */
 void prompt(int fp, struct stat buf);
-char *_getline(FILE *pf);
+void _puts(char *str);
+
+/* Input */
+char *_getline(FILE *fp);
+
+/* Tokenizer */
 char **tokenizer(char *str);
-char *_convert(char *command, char *fulldir, char *location);
+
+/* Built-in Execution */
+int builtin_execute(char **toks);
+int shell_digit_builtins(built_t builtin[]);
+
+/* Child Process */
 int child(char *fulldir, char **toks, char **environ);
+
+/* Error Handling */
 void errors(int error);
 
-/* text_processoing */
-void _puts(char *str);
-char *_strcpy(char *endpoint, char *src);
-int _strlen(char *s);
+/* Text Processing */
 int _strcmp(char *name, char *var, unsigned int length);
 int _strncmp(char *name, char *var, unsigned int length);
+char *_strcpy(char *endpoint, char *src);
+int _strlen(char *s);
 
-/* shell_env shell_exit prototypes */
-int shell_env(void);
+/* Exit and Environment */
 int shell_exit(void);
-int builtin_execute(char **toks);
-int shell_digit_builtins(built_s builtin[]);
+int shell_env(void);
 
-/* helper function prototype for linked list location */
-char *_getenv(const char *name);
-char **copy_env(char **environ_copy, unsigned int environ_length);
-list_s *locationlist(char *var, list_s *head);
-
-/* prototypes for free func. */
-void free_all(char **toks, char *location, char *line, char *fulldir, int flag);
+/* Freeing Memory */
+void free_all(char **toks, char *location, char *line, char *fulldir, int time);
 void free_dp(char **array, unsigned int length);
+
+/* Helper Functions */
+char *_convert(char *command, char *fulldir, char *location);
+char *_getenv(const char *class);
+char **copy_env(char **environ_copy, unsigned int environ_length);
+
 #endif /* SHELL_H */
