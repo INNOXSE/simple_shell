@@ -4,7 +4,7 @@
  * main - prints line using get line
  * Return: 0
  */
-int main (void)
+int main(void)
 {
 	char *line = NULL;
 
