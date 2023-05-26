@@ -12,7 +12,7 @@ int builtin_execute(char **toks, built_t *builtin)
 	unsigned int num_builtins;
 	unsigned int k;
 
-	struct built_s builtin[] = {
+	struct built_t builtin[] = {
 		{"exit", shell_exit},
 		{"env", shell_env},
 		{NULL, NULL}
