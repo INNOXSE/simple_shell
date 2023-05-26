@@ -9,7 +9,7 @@
 #include <sys/wait.h>
 #include <string.h>
 
-extern char **environ; // Declaration of environ variable
+extern char **environ; /* Declaration of environ variable */
 
 #define BUFFER 1024
 #define PROMPT "$ "
