@@ -10,7 +10,15 @@ int builtin_execute(char **toks, struct built_t builtin)
 	unsigned int length;
 	unsigned int num_builtins;
 	unsigned int k;
+	
+	struct built_t builtin[] = {
+		{"exit", shell_exit},
+		{"env", shell_env},
+		{NULL, NULL}
+	};
 
+	if (toks[0] == NULL)
+		return (1);
 	length = _strlen(toks[0]);
 	num_builtins = shell_digit_builtins(builtin);
 
