@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * main - uses getline and prints line
+ * main - prints line using get line
  * Return: 0
  */
 int main (void)
