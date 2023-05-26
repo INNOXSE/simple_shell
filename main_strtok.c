@@ -8,28 +8,31 @@
  */
 void path_print(void)
 {
-	char *path_env = getenv("PATH");  /* Get the value of the PATH environment variable */
+	char *path_env = getenv("PATH");
+
 	if (path_env == NULL)
 	{
 		printf("PATH environment variable not found\n");
 		return;
 	}
 
-	char *path_copy = strdup(path_env);  /* Create a copy of the PATH string */
+	char *path_copy = strdup(path_env);
+
 	if (path_copy == NULL)
 	{
 		printf("Memory allocation failed\n");
 		return;
 	}
 
-	char *directory = strtok(path_copy, ":");  /* Tokenize the PATH string using ':' delimiter */
+	char *directory = strtok(path_copy, ":");
+
 	while (directory != NULL)
 	{
-		printf("%s\n", directory);  /* Print each directory */
+		printf("%s\n", directory);
 		directory = strtok(NULL, ":");
 	}
 
-	free(path_copy);  /* Free the memory allocated for the copy of the PATH string */
+	free(path_copy);
 }
 
 /**
@@ -42,5 +45,5 @@ int main(int argc, char *argv[])
 {
 	path_print();
 
-	return 0;
+	return (0);
 }
