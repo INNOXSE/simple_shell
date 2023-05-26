@@ -1,27 +1,27 @@
-#include "holberton.h"
+#include "shell.h"
 
 /**
- * _strcmp - compares two strings to find out if they are exactly the same
- * @name: name supplied by user to search for
- * @variable: variable to compare against
+ * _strcmp - compares similarity of strings 
+ * @name: user name supplied to be searched
+ * @variable: var to compare against
  * @length: length of name
  * Return: 1 if strings are equal, -1 if they are not
  */
 int _strcmp(char *name, char *variable, unsigned int length)
 {
 	unsigned int var_length;
-	unsigned int i;
+	unsigned int k;
 
 	var_length = _strlen(variable);
 	if (var_length != length)
 		return (-1);
 
-	i = 0;
-	while (name[i] != '\0' && variable[i] != '\0')
+	k = 0;
+	while (name[k] != '\0' && variable[k] != '\0')
 	{
-		if (name[i] != variable[i])
+		if (name[k] != variable[k])
 			return (1);
-		i++;
+		k++;
 	}
 	return (0);
 }
@@ -36,12 +36,12 @@ int _strcmp(char *name, char *variable, unsigned int length)
  */
 int _strncmp(char *name, char *variable, unsigned int length)
 {
-	unsigned int i;
+	unsigned int k;
 
-	i = 0;
-	while (i < length)
+	k = 0;
+	while (k < length)
 	{
-		if (name[i] != variable[i])
+		if (name[k] != variable[k])
 			return (-1);
 		i++;
 	}
@@ -54,15 +54,15 @@ int _strncmp(char *name, char *variable, unsigned int length)
  * @src: string source
  * Return: the pointer to dest
  */
-char *_strcpy(char *dest, char *src)
+char *_strcpy(char *endpoint, char *src)
 {
-	int i;
-	int j = _strlen(src);
+	int k;
+	int s = _strlen(src);
 
-	for (i = 0; i <= j; i++)
-		dest[i] = src[i];
+	for (k = 0; k <= s; k++)
+		endpoint[k] = src[k];
 
-	return (dest);
+	return (endpoint);
 }
 /**
  * _strlen - returns the length of a string
@@ -71,10 +71,10 @@ char *_strcpy(char *dest, char *src)
  */
 int _strlen(char *s)
 {
-	int i = 0;
+	int k = 0;
 
-	while (s[i] != '\0')
-		i++;
+	while (s[k] != '\0')
+		k++;
 
-	return (i);
+	return (k);
 }
