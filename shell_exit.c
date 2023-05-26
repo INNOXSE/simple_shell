@@ -1,4 +1,6 @@
 #include "shell.h"
+#include <stdlib.h>
+#include <unistd.h>
 
 /**
  * shell_exit - exits the shell
