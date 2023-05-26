@@ -1,15 +1,15 @@
-#include "holberton.h"
+#include "shell.h"
 
 /**
- * tokenizer - tokenizes string
- * @str: user input
- * Return: pointer to array of tokens
+ * tokenizer - string tokenization
+ * @str: userinput
+ * Return: pointer to token array
  */
 char **tokenizer(char *str)
 {
 	char **tokens;
 	char *token;
-	unsigned int i;
+	unsigned int k;
 
 	tokens = malloc(sizeof(char) * BUFFER);
 	if (tokens == NULL)
@@ -20,15 +20,15 @@ char **tokenizer(char *str)
 
 	token = strtok(str, "\n\t\r ");
 
-	i = 0;
+	k = 0;
 	while (token != NULL)
 	{
-		tokens[i] = token;
+		tokens[k] = token;
 		token = strtok(NULL, "\n\t\r ");
-		i++;
+		k++;
 	}
 
-	tokens[i] = NULL;
+	tokens[k] = NULL;
 
 	return (tokens);
 }

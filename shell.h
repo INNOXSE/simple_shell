@@ -1,5 +1,5 @@
-#ifndef HOLBERTON_H
-#define HOLBERTON_H
+#ifndef SHELL_H
+#define SHELL_H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -32,9 +32,9 @@ typedef struct list_s
 } list_s;
 
 /**
- * struct built_s - linked list of builtins
- * @name: name of builtin
- * @p: pointer to function
+ * struct built_s - builtins linked list
+ * @name: builtin name
+ * @p: function of a pointer
  *
  * Description: struct for builtin functions.
 **/
@@ -72,4 +72,4 @@ list_s *pathlist(char *variable, list_s *head);
 /* prototypes for free functions */
 void free_all(char **tokens, char *path, char *line, char *fullpath, int flag);
 void free_dp(char **array, unsigned int length);
-#endif /* HOLBERTON_H */
+#endif /* SHELL_H */

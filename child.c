@@ -1,9 +1,9 @@
-#include "holberton.h"
+#include "shell.h"
 
 /**
- * child - function for child process
- * @fullpath: full path of executable
- * @tokens: tokenized user input
+ * child - func child processing
+ * @fullpath: full path of exec
+ * @tokens: tokenizes userinput
  * Return: 0 on success
  */
 int child(char *fullpath, char **tokens)

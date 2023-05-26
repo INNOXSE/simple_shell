@@ -1,8 +1,8 @@
-#include "holberton.h"
+#include "shell.h"
 
 /**
- * errors - prints errors based on case
- * @error: error number associated with perror statement
+ * errors - prints errs based on cases
+ * @error: error no asso with perror statement
  * Return: void
  */
 void errors(int error)

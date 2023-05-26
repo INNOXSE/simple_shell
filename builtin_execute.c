@@ -9,7 +9,7 @@ int builtin_execute(char **tokens)
 	int status;
 	unsigned int length;
 	unsigned int num;
-	unsigned int i;
+	unsigned int k;
 
 	built_s builtin[] = {
 		{"exit", shell_exit},
@@ -23,11 +23,11 @@ int builtin_execute(char **tokens)
 	length = _strlen(tokens[0]);
 
 	num = shell_num_builtins(builtin);
-	for (i = 0; i < num; i++)
+	for (k = 0; k < num; k++)
 	{
-		if (_strcmp(tokens[0], builtin[i].name, length) == 0)
+		if (_strcmp(tokens[0], builtin[k].name, length) == 0)
 		{
-			status = (builtin[i].p)();
+			status = (builtin[k].p)();
 			return (status);
 		}
 	}
@@ -35,18 +35,18 @@ int builtin_execute(char **tokens)
 }
 
 /**
-**shell_num_builtins - this check num built-ins
+**shell_num_builtins - this check number in built-ins
 **@builtin: takes the builtin to be counted
 **Return: num of built-ins
 **/
 
 int shell_num_builtins(built_s builtin[])
 {
-	unsigned int i;
+	unsigned int k;
 
-	i = 0;
+	k = 0;
 	while (builtin[i].name != NULL)
-		i++;
+		k++;
 
-	return (i);
+	return (k);
 }

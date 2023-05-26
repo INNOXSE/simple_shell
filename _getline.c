@@ -1,9 +1,9 @@
 #include "shell.h"
 
 /**
- * _getline - puts input from user into buffer line
- * @fp: buffer for user input
- * Return: buffer with user input
+ * _getline - input from user into buffer line
+ * @fp: buffer 4 user input
+ * Return: buff with ui
  */
 char *_getline(FILE *fp)
 {

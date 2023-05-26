@@ -1,9 +1,9 @@
-#include "holberton.h"
+#include "shell.h"
 
 /**
- * prompt - checks mode and prints prompt if in interactive mode
+ * prompt - checks mode in interactive mode
  * @fd: file stream
- * @buf: buffer
+ * @buf: buf
 **/
 void prompt(int fd, struct stat buf)
 {
@@ -14,7 +14,7 @@ void prompt(int fd, struct stat buf)
 }
 
 /**
- * _puts - prints a string without a \n
+ * _puts - prints a string without a new line \n
  * @str: string to print
  * Return: void
  */
