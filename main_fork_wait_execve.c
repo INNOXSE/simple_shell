@@ -1,4 +1,4 @@
-#include "holberton.h"
+#include "shell.h"
 
 /**
  * main - executes the command ls -l /tmp in 5 different child processes
@@ -11,10 +11,10 @@ int main(void)
 	char *newargv[] = { "-l", "/tmp", NULL };
 	char *newenviron[] = { NULL };
 	int status = 0;
-	unsigned int i;
+	unsigned int k;
 
-	i = 0;
-	while (i < 5)
+	k = 0;
+	while (k < 5)
 	{
 		child_pid = fork();
 		if (child_pid == -1)
@@ -26,7 +26,7 @@ int main(void)
 		{
 			execve(filename, newargv, newenviron);
 		}	wait(&status);
-		i++;
+		k++;
 	}
 	return (0);
 }
