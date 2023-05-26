@@ -1,50 +1,48 @@
-<<<<<<< HEAD
-=======
-#include "shell.h"
-
-char **environ; /* Definition of environ variable */
-
+#include "holberton.h"
+/**
+ * main - main loop of shell
+ * Return: 0 on success
+ */
 int main(void)
 {
-    char *line, **toks;
-    struct stat buf;
-    int fp, stat;
+	char *line, *path, *fullpath;
+	char **tokens;
+	int flag, builtin_status, child_status;
+	struct stat buf;
 
-    fp = STDIN_FILENO;
-    prompt(fp, buf);
-
-    while ((line = _getline(stdin)) != NULL)
-    {
-        toks = tokenizer(line);
-        if (toks != NULL && toks[0] != NULL)
-        {
-            struct built_t builtin[] = {
-                {"exit", shell_exit},
-                {"env", shell_env},
-                {NULL, NULL}
-            };
-
-            if (builtin_execute(toks, struct built_t builtin) == 1)
-            {
-                char *command = toks[0];
-                char *location = _getenv("PATH");
-                char *fulldir = NULL;
-
-                fulldir = _convert(command, fulldir, location);
-                if (fulldir != NULL)
-                    child(fulldir, toks, environ);
-                else
-                    errors(4);
-
-                free(fulldir);
-            }
-        }
-
-        free_all(toks, NULL, line, NULL, 0);
-        prompt(fp, buf);
-    }
-
-    free(line);
-    return (stat);
+	while (TRUE)
+	{
+		prompt(STDIN_FILENO, buf);
+		line = _getline(stdin);
+		if (_strcmp(line, "\n", 1) == 0)
+		{
+			free(line);
+			continue;
+		}
+		tokens = tokenizer(line);
+		if (tokens[0] == NULL)
+			continue;
+		builtin_status = builtin_execute(tokens);
+		if (builtin_status == 0 || builtin_status == -1)
+		{
+			free(tokens);
+			free(line);
+		}
+		if (builtin_status == 0)
+			continue;
+		if (builtin_status == -1)
+			_exit(EXIT_SUCCESS);
+		flag = 0; /* 0 if full_path is not malloc'd */
+		path = _getenv("PATH");
+		fullpath = _which(tokens[0], fullpath, path);
+		if (fullpath == NULL)
+			fullpath = tokens[0];
+		else
+			flag = 1; /* if fullpath was malloc'd, flag to free */
+		child_status = child(fullpath, tokens);
+		if (child_status == -1)
+			errors(2);
+		free_all(tokens, path, line, fullpath, flag);
+	}
+	return (0);
 }
->>>>>>> b7442c2fb737af381673d0b951d4d905c9e2b7cc
