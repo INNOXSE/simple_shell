@@ -1,6 +1,6 @@
-#include "holberton.h"
+#include "shell.h"
 /**
-**shell_exit - exits the shell
+**shell_exit - exits the simple shell
 **Return: void
 **/
 
@@ -11,20 +11,20 @@
 
 
 /**
-**shell_env - prints environment
+**shell_env - prts environs
 **Return: void
 **/
 
 	int shell_env(void)
 	{
-		unsigned int i;
+		unsigned int k;
 
-		i = 0;
-		while (environ[i] != NULL)
+		k = 0;
+		while (environ[k] != NULL)
 		{
-			write(STDOUT_FILENO, environ[i], _strlen(environ[i]));
+			write(STDOUT_FILENO, environ[k], _strlen(environ[k]));
 			write(STDOUT_FILENO, "\n", 1);
-			i++;
+			k++;
 		}
 		return (0);
 	}
