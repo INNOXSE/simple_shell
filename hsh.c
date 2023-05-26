@@ -1,55 +1,39 @@
 #include "shell.h"
 
-/**
- * main - this is the main shell loop
- * Return: 0 Zero on successul exec.
- *
- */
 int main(void)
 {
-
-	char *line, *location, *fulldir; 
-	char **toks;
-	int flag, builtin_stat, child_stat;
+	char *line, **toks;
 	struct stat buf;
+	int fp, stat;
 
-	while (TRUE)
+	fp = STDIN_FILENO;
+	prompt(fp, buf);
+
+	while ((line = _getline(stdin)) != NULL)
 	{
-		prompt(STDIN_FILENO, buf);
-		line = _getline(stdin);
-		if (_strcmp(line, "\n", 1) == 0)
-		printf("checkings1  %s \n", line);	}
-		free(line);
-		if (_strcmp(line, "\n" 1) == 0)
-		{
-			free(line);
-
-			continue;
-		}
 		toks = tokenizer(line);
-		if (toks[0] == NULL)
-			continue;
-		builtin_stat = (builtin_execute(toks));
-		if (builtin_stat == 0 || builtin_stat == -1)
+		if (toks != NULL && toks[0] != NULL)
 		{
-			free(toks);
-			free(line);
+			if (builtin_execute(toks) == 1)
+			{
+				char *command = toks[0];
+				char *location = _getenv("PATH");
+				char *fulldir = NULL;
+
+				fulldir = _convert(command, fulldir, location);
+				if (fulldir != NULL)
+					child(fulldir, toks, environ);
+				else
+					errors(4);
+
+				free(fulldir);
+			}
 		}
-		if (builtin_stat == 0)
-			continue;
-		if (builtin_stat == -1)
-			_exit(EXIT_SUCCESS);
-		flag = 0; /* 0 fulldir is not free 'd*/
-		location = _getenv("LOCATION");
-		fulldir = _convert(toks[0], fulldir, location);
-		if (fulldir == NULL)
-			fulldir = toks[0];
-		else
-			flag = 1; /* if fulldir was malloc'd, flag to free */
-		child_stat = child(fulldir, toks, environ);
-		if (child_stat == -1)
-			errors(2);
-		free_all(toks, location, line, fulldir, flag);
+
+		free_all(toks, NULL, line, NULL, 0);
+		prompt(fp, buf);
 	}
-	return (0);
+
+	free(line);
+	return (stat);
 }
