@@ -12,34 +12,35 @@ char *_getenv(const char *class)
 	char *var, *value, *location;
 	int compare;
 	unsigned int environ_length,length, k;
-
+	
+	environ_length = 0;
 	while (environ[environ_length] != NULL)
 		environ_length++;
 	environ_copy = NULL;
 	environ_copy = copy_env(environ_copy, environ_length);
+
 	length = _strlen((char *)class);
 	k = 0;
 	while (environ_copy[k] != NULL)
 	{
 		var = environ_copy[k];
 		compare = _strncmp((char *)class, var, length);
-		if (compare == 1)
+		if (compare == 0)
 		{
 			value = strtok(var, "=");
 			value = strtok(NULL, "\n ");
-			if (*value == '\0')
+			if (value == NULL)
 			{
-			errors(4);
-			exit(EXIT_FAILURE);
+				errors(4);
+				exit(EXIT_FAILURE);
 			}
-			/*location_length = _strlen(value);*/
 			location = malloc(sizeof(char) * (_strlen(value) + 1));
 			if (location == NULL)
 			{
 				errors(3);
 				return (NULL);
-}
-			location = _strcpy(location, value);
+			}
+			_strcpy(location, value);
 			free_dp(environ_copy, environ_length);
 			return (location);
 		}
@@ -61,12 +62,13 @@ char **copy_env(char **environ_copy, unsigned int environ_length)
 	unsigned int var_length;
 	unsigned int k;
 
-	environ_copy = malloc(sizeof(char *) * (environ_length));
+	environ_copy = malloc(sizeof(char *) * (environ_length + 1));
 	if (environ_copy == NULL)
 	{
 		errors(3);
 		return (NULL);
 	}
+
 	k = 0;
 	while (k < environ_length)
 	{
@@ -76,10 +78,13 @@ char **copy_env(char **environ_copy, unsigned int environ_length)
 		if (environ_copy[k] == NULL)
 		{
 			errors(3);
+			free_dp(environ_copy, k);
 			return (NULL);
 		}
 		_strcpy(environ_copy[k], environ[k]);
 		k++;
 	}
+	environ_copy[k] = NULL;
+
 	return (environ_copy);
 }
