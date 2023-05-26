@@ -11,7 +11,7 @@ int builtin_execute(char **toks, built_t builtin)
 	unsigned int num_builtins;
 	unsigned int k;
 
-	struct built_t *builtin[] = {
+	struct built_t builtin[] = {
 		{"exit", shell_exit},
 		{"env", shell_env},
 		{NULL, NULL}
@@ -28,8 +28,6 @@ int builtin_execute(char **toks, built_t builtin)
 		if (_strcmp(toks[0], builtin[k].name, length) == 0)
 		{
 			return (builtin[k].p)();
-		}
-			return (0);
 		}
 	}
 
@@ -50,4 +48,3 @@ unsigned int shell_digit_builtins(built_t builtin[])
 
 	return (k);
 }
-
