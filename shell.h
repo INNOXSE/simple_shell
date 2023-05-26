@@ -56,7 +56,7 @@ void _puts(char *str);
 int _strlen(char *s);
 int _strcmp(char *name, char *variable, unsigned int length);
 int _strncmp(char *name, char *variable, unsigned int length);
-char *_strcpy(char *dest, char *src);
+char *_strcpy(char *endpoint, char *src);
 
 /* prototypes for builtins */
 int shell_env(void);

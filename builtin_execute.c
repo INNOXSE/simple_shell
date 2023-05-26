@@ -45,7 +45,7 @@ int shell_num_builtins(built_s builtin[])
 	unsigned int k;
 
 	k = 0;
-	while (builtin[i].name != NULL)
+	while (builtin[k].name != NULL)
 		k++;
 
 	return (k);

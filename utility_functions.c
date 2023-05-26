@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * _strcmp - compares similarity of strings 
+ * _strcmp - compares similarity of strings
  * @name: user name supplied to be searched
  * @variable: var to compare against
  * @length: length of name
@@ -43,14 +43,14 @@ int _strncmp(char *name, char *variable, unsigned int length)
 	{
 		if (name[k] != variable[k])
 			return (-1);
-		i++;
+		k++;
 	}
 	return (1);
 }
 
 /**
  * *_strcpy - copies string pointed to by src to the buffer pointed to dest
- * @dest: string destination
+ * @endpoint: string destination
  * @src: string source
  * Return: the pointer to dest
  */
