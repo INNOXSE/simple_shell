@@ -9,6 +9,8 @@
 #include <sys/wait.h>
 #include <string.h>
 
+extern char **environ; // Declaration of environ variable
+
 #define BUFFER 1024
 #define PROMPT "$ "
 #define ERR_FORK "Error: fork failed\n"
@@ -18,8 +20,8 @@
 /* Struct for built-in functions */
 typedef struct built_s
 {
-	char *name;
-	int (*p)(void);
+    char *name;
+    int (*p)(void);
 } built_t;
 
 /* Prompt */
@@ -33,8 +35,8 @@ char *_getline(FILE *fp);
 char **tokenizer(char *str);
 
 /* Built-in Execution */
-int builtin_execute(char **toks);
-int shell_digit_builtins(built_t builtin[]);
+int builtin_execute(char **toks, built_t *builtin);
+int shell_digit_builtins(built_t *builtin);
 
 /* Child Process */
 int child(char *fulldir, char **toks, char **environ);
@@ -46,7 +48,7 @@ void errors(int error);
 int _strcmp(char *name, char *var, unsigned int length);
 int _strncmp(char *name, char *var, unsigned int length);
 char *_strcpy(char *endpoint, char *src);
-int _strlen(char *s);
+unsigned int _strlen(char *s);
 
 /* Exit and Environment */
 int shell_exit(void);
