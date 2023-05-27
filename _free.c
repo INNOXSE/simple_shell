@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * freeMain - Frees the array of tokens and the input
+ * free_main - Frees the array of tokens and the input
  * string in the main function
  *
  * @array_of_tokens: Tokenized string
@@ -9,7 +9,7 @@
  *
  * Return: void
  */
-void freeMain(char **array_of_tokens, char *input)
+void free_main(char **array_of_tokens, char *input)
 {
 	int index;
 
@@ -20,14 +20,14 @@ void freeMain(char **array_of_tokens, char *input)
 }
 
 /**
- * freeWhich - Frees the resources used in the 'which' function
+ * free_which - Frees the resources used in the 'which' function
  *
  * @path_var: Path variable
  * @array_of_tokens: Array of tokens
  *
  * Return: void
  */
-void freeWhich(char **path_var, char **array_of_tokens)
+void free_which(char **path_var, char **array_of_tokens)
 {
 	int index;
 
