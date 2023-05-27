@@ -1,5 +1,8 @@
 #include "main.h"
+<<<<<<< HEAD
 
+=======
+>>>>>>> 23bbcf3a970839819c3dbc7f7cf7b96002036300
 /**
  * is_valid_path - Check if a filename has a valid path format.
  * @filename: The filename to check.
