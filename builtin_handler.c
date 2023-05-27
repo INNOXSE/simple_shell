@@ -40,7 +40,8 @@ int is_builtin(char **array_of_tokens)
  * on the first token in the command array. It looks for a matching command in
  * the `builtins` array and calls the corresponding function.
  *
- * Return: The return value of the executed built-in command, or 0 if the command
+ * Return: The return value of the executed built-in command,
+ * or 0 if the command
  * is not a built-in or if there was an error.
  */
 int builin_handler(char **array_of_tokens)

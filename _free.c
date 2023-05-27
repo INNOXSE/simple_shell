@@ -1,7 +1,8 @@
 #include "main.h"
 
 /**
- * freeMain - Frees the array of tokens and the input string in the main function
+ * freeMain - Frees the array of tokens and the input
+ * string in the main function
  *
  * @array_of_tokens: Tokenized string
  * @input: Input string

@@ -1,3 +1,5 @@
+#include "main.h"
+
 /**
  * _unsetenv - Unset an environment variable.
  * @name: Name of the variable to unset.

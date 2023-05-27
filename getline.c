@@ -16,12 +16,14 @@
  * Return: The number of characters read (excluding the null terminator) on
  *         success, or -1 on failure.
  */
-ssize_t _getline(char **input, size_t *number_of_malloc_bytes_allocated, int status)
+ssize_t _getline(char **input, size_t
+		*number_of_malloc_bytes_allocated, int status)
 {
 	ssize_t number_of_characters_read;
 
 	prompt();
-	number_of_characters_read = getline(input, number_of_malloc_bytes_allocated, stdin);
+	number_of_characters_read =
+		getline(input, number_of_malloc_bytes_allocated, stdin);
 	if (number_of_characters_read == -1)
 	{
 		free(*input);

@@ -14,8 +14,10 @@
  * @name: The name of the command
  * @function: The corresponding function for the command
  *
- * Description: This structure represents a built-in command in the shell program.
- * It consists of the name of the command and a pointer to the corresponding function.
+ * Description: This structure represents a built-in
+ * command in the shell program.
+ * It consists of the name of the command and a pointer to
+ * the corresponding function.
  */
 struct builtin_command
 {

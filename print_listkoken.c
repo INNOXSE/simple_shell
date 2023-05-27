@@ -9,19 +9,20 @@
  */
 size_t print_listtoken(const listtoken_t *head)
 {
-    size_t count = 0;
-    const listtoken_t *current;
+	size_t count = 0;
+	const listtoken_t *current;
 
-    if (head == NULL)
-        return 0;
+	if (head == NULL)
+		return (0);
 
-    current = head;
-    while (current != NULL)
-    {
-        printf("%s\n", current->token);
-        count++;
-        current = current->next;
-    }
+	current = head;
+	while (current != NULL)
+	{
+		printf("%s\n", current->token);
+		count++;
 
-    return count;
+		current = current->next;
+	}
+
+	return (count);
 }

@@ -10,7 +10,7 @@
  * Return: None.
  */
 void create_envar(char **env_var, unsigned int envar_length, const char *name,
-                  const char *value)
+		const char *value)
 {
 	*env_var = malloc_char(env_var, envar_length,
 				"_setenv() Error: env_var malloc failed");
@@ -24,7 +24,8 @@ void create_envar(char **env_var, unsigned int envar_length, const char *name,
 }
 
 /**
- * _env_set_exists - Check if an environment variable exists and update it if necessary.
+ * _env_set_exists - Check if an environment
+ * variable exists and update it if necessary.
  * @env_var: Pointer to the environment variable string.
  * @envar_length: Length of the environment variable string.
  * @name: Name string.
@@ -58,7 +59,8 @@ int _env_set_exists(char *env_var, unsigned int envar_length, const char *name,
 }
 
 /**
- * env_does_not_exists - Handle the case when the environment variable does not exist.
+ * env_does_not_exists - Handle the case when
+ * the environment variable does not exist.
  * @env_var: Pointer to the environment variable string.
  * @envar_length: Length of the environment variable string.
  * @env_length: Length of the environment.

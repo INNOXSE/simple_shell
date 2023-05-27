@@ -18,5 +18,5 @@ int _env_builtin(char **array_of_tokens __attribute__((unused)))
 		write(STDOUT_FILENO, "\n", strlen("\n"));
 	}
 
-	return environment_index;
+	return (environment_index);
 }

@@ -1,3 +1,5 @@
+#include "main.h"
+
 /**
  * is_valid_path - Check if a filename has a valid path format.
  * @filename: The filename to check.
@@ -52,10 +54,14 @@ void filepath_creator(char **file_path, char **array_of_tokens,
  *
  * Description: This function searches for the full path of the executable file
  * specified by the filename. It first checks the directories listed in the
- * "PATH" environment variable. If the file is found, the full path is returned.
- * If the file is not found in the directories, the function checks if the filename
- * has a valid path format (starts with "../", "./", or "/"). If it does, the filename
- * itself is returned as the full path. If the file is not found and the filename does
+ * "PATH" environment variable. If the file is found,
+ * the full path is returned.
+ * If the file is not found in the directories,
+ * the function checks if the filename
+ * has a valid path format (starts with "../", "./", or "/").
+ * If it does, the filename
+ * itself is returned as the full path.
+ * If the file is not found and the filename does
  * not have a valid path format, NULL is returned.
  *
  * Return: The full path of the executable file, or NULL if not found.
@@ -84,7 +90,7 @@ char *_which(char *filename)
 					return (file_path);
 				}
 				free(file_path);
-        }
+			}
 			free_which(&path_var, array_of_tokens);
 		}
 		else
@@ -95,4 +101,3 @@ char *_which(char *filename)
 		return (strdup(filename));
 	return (NULL);
 }
-			

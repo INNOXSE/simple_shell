@@ -14,5 +14,5 @@ int _print_env(void)
 	for (environ_index = 0; __environ[environ_index] != NULL; environ_index++)
 		printf("%s\n", __environ[environ_index]);
 
-	return 0;
+	return (0);
 }
